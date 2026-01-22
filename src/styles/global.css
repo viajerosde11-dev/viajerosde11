@@ -1,0 +1,62 @@
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Sora:wght@300;400;500;600&display=swap");
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-sand: #f8f1e6;
+    --color-ink: #1e2326;
+    --color-ocean: #0b6ea8;
+    --color-ocean-dark: #06517c;
+    --color-sun: #ffb020;
+    --color-coral: #f46d4f;
+    --color-mint: #5cc6b0;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: "Sora", "Segoe UI", system-ui, sans-serif;
+    background-image: radial-gradient(
+        circle at 10% 20%,
+        rgba(255, 176, 32, 0.12),
+        transparent 35%
+      ),
+      radial-gradient(circle at 80% 10%, rgba(92, 198, 176, 0.15), transparent 40%),
+      linear-gradient(180deg, #f8f1e6 0%, #f6efe3 100%);
+    min-height: 100vh;
+  }
+
+  h1,
+  h2,
+  h3,
+  .font-display {
+    font-family: "Bricolage Grotesque", "Trebuchet MS", sans-serif;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+  }
+
+  .wave-mask {
+    mask-image: radial-gradient(circle at 20% 0%, black 55%, transparent 60%),
+      radial-gradient(circle at 80% 0%, black 55%, transparent 60%);
+    mask-size: 60% 120%;
+    mask-repeat: no-repeat;
+    mask-position: left top, right top;
+  }
+}
