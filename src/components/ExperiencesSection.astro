@@ -1,0 +1,30 @@
+---
+import { experiences } from '../data/site';
+---
+
+<section id="experiencias" class="relative">
+  <div class="mx-auto max-w-6xl px-6 py-16">
+    <div class="flex flex-wrap items-end justify-between gap-6">
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-[0.3em] text-[color:var(--color-ocean-dark)]">
+          {experiences.kicker}
+        </p>
+        <h2 class="mt-2 text-3xl font-bold md:text-4xl">
+          {experiences.title}
+        </h2>
+      </div>
+      <div class="rounded-full bg-white/70 px-5 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-slate-600">
+        {experiences.badge}
+      </div>
+    </div>
+    <div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+      {experiences.cards.map((card) => (
+        <div class="glass-card rounded-[1.75rem] p-5 text-sm text-slate-700">
+          <div class="aspect-[4/3] rounded-2xl" style={`background: ${card.gradient}`}></div>
+          <h3 class="mt-4 text-lg font-bold text-[color:var(--color-ink)]">{card.title}</h3>
+          <p class="mt-2">{card.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,9 +1,8 @@
-@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Sora:wght@300;400;500;600&display=swap");
 @import "tailwindcss";
 
 @layer base {
   :root {
-    --color-sand: #f8f1e6;
+    --color-sand: #ffffff;
     --color-ink: #1e2326;
     --color-ocean: #0b6ea8;
     --color-ocean-dark: #06517c;
@@ -22,13 +21,7 @@
 
   body {
     font-family: "Sora", "Segoe UI", system-ui, sans-serif;
-    background-image: radial-gradient(
-        circle at 10% 20%,
-        rgba(255, 176, 32, 0.12),
-        transparent 35%
-      ),
-      radial-gradient(circle at 80% 10%, rgba(92, 198, 176, 0.15), transparent 40%),
-      linear-gradient(180deg, #f8f1e6 0%, #f6efe3 100%);
+    background-color: #ffffff;
     min-height: 100vh;
   }
 
@@ -39,6 +32,10 @@
     font-family: "Bricolage Grotesque", "Trebuchet MS", sans-serif;
     letter-spacing: -0.02em;
   }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
 }
 
 @layer utilities {
@@ -48,8 +45,14 @@
 
   .glass-card {
     background: rgba(255, 255, 255, 0.75);
-    backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.5);
+  }
+
+  @supports ((-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px))) {
+    .glass-card {
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+    }
   }
 
   .wave-mask {
@@ -58,5 +61,43 @@
     mask-size: 60% 120%;
     mask-repeat: no-repeat;
     mask-position: left top, right top;
+  }
+
+  .skip-link {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    z-index: 50;
+    padding: 0.6rem 1rem;
+    border-radius: 999px;
+    background: #ffffff;
+    color: #06517c;
+    font-weight: 600;
+    transform: translateY(-150%);
+    transition: transform 0.2s ease;
+  }
+
+  .skip-link:focus {
+    transform: translateY(0);
+  }
+
+  .whatsapp-fab {
+    background: #25d366;
+    box-shadow: 0 12px 22px rgba(15, 23, 42, 0.18);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .whatsapp-fab:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 16px 26px rgba(15, 23, 42, 0.22);
+  }
+
+  .whatsapp-fab:focus-visible {
+    outline: 3px solid rgba(37, 211, 102, 0.4);
+    outline-offset: 4px;
+  }
+
+  .whatsapp-fab svg {
+    display: block;
   }
 }

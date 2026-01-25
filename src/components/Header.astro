@@ -1,0 +1,58 @@
+---
+import { header, links, navigation, site } from '../data/site';
+---
+
+<header class="relative z-10">
+  <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-6">
+    <div class="flex items-center gap-3">
+      <img
+        src="/assets/logo-viajerosde11.svg"
+        alt={`Logo ${site.name}`}
+        class="h-16 w-16 rounded-full"
+      />
+      <div>
+        <p class="font-display text-lg font-semibold">{site.name}</p>
+        <p class="text-xs uppercase tracking-[0.2em] text-[color:var(--color-ocean-dark)]">
+          {site.tagline}
+        </p>
+      </div>
+    </div>
+    <nav class="hidden items-center gap-6 text-sm font-medium md:flex">
+      {navigation.map((item) => (
+        <a href={item.href} class="hover:text-[color:var(--color-ocean)]">
+          {item.label}
+        </a>
+      ))}
+    </nav>
+    <div class="md:hidden">
+      <details class="relative">
+        <summary class="list-none rounded-full border border-[color:var(--color-ocean-dark)] px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--color-ocean-dark)]">
+          {header.menuLabel}
+        </summary>
+        <div class="absolute right-0 mt-3 w-56 rounded-2xl border border-white/70 bg-white/95 p-3 shadow-xl">
+          {navigation.map((item) => (
+            <a href={item.href} class="block rounded-lg px-3 py-2 text-sm hover:bg-slate-100">
+              {item.label}
+            </a>
+          ))}
+          <a
+            href={links.whatsapp.info}
+            target="_blank"
+            rel="noreferrer"
+            class="mt-2 block rounded-full bg-[color:var(--color-ocean)] px-4 py-2 text-center text-sm font-semibold text-white shadow-md transition hover:bg-[color:var(--color-ocean-dark)]"
+          >
+            {header.ctaLabel}
+          </a>
+        </div>
+      </details>
+    </div>
+    <a
+      href={links.whatsapp.info}
+      target="_blank"
+      rel="noreferrer"
+      class="hidden rounded-full bg-[color:var(--color-ocean)] px-5 py-2 text-sm font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-[color:var(--color-ocean-dark)] md:inline-flex"
+    >
+      {header.ctaLabel}
+    </a>
+  </div>
+</header>

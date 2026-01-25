@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { meta } from '../data/site';
 
 type Props = {
   title?: string;
@@ -7,8 +8,8 @@ type Props = {
 };
 
 const {
-  title = 'Viajer@s de 11 | Incursiones de grado 11',
-  description = 'Incursiones, planes y experiencias inolvidables para estudiantes de grado 11.',
+  title = meta.defaultTitle,
+  description = meta.defaultDescription,
 } = Astro.props as Props;
 ---
 <!doctype html>
@@ -17,6 +18,15 @@ const {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
+    <meta name="theme-color" content="#ffffff" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Viajer@s de 11" />
+    <meta property="og:image" content={meta.ogImage} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
     <title>{title}</title>
     <link rel="icon" type="image/svg+xml" href="/assets/logo-viajerosde11.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -26,7 +36,8 @@ const {
       rel="stylesheet"
     />
   </head>
-  <body class="bg-[color:var(--color-sand)] text-[color:var(--color-ink)]">
+  <body class="text-[color:var(--color-ink)]">
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
     <slot />
   </body>
 </html>
