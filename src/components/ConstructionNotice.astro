@@ -1,0 +1,60 @@
+---
+import { site } from '../data/site';
+
+const title = 'Sitio en construcción';
+const message =
+  'Estamos trabajando en la web oficial. Algunas secciones pueden cambiar mientras finalizamos el contenido.';
+const ctaLabel = 'Entrar al sitio';
+---
+
+<div
+  id="construction-notice"
+  class="fixed inset-0 z-[60] items-center justify-center px-6 py-10"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="construction-title"
+  aria-describedby="construction-message"
+  style="display: none;"
+>
+  <div class="absolute inset-0 bg-slate-900/70 backdrop-blur-sm"></div>
+  <div class="glass-card relative w-full max-w-lg rounded-[2.5rem] p-8 text-center shadow-2xl">
+    <img
+      src="/assets/logo-viajerosde11.svg"
+      alt={`Logo ${site.name}`}
+      class="mx-auto h-20 w-20 rounded-full"
+    />
+    <h2 id="construction-title" class="mt-5 text-2xl font-bold">
+      {title}
+    </h2>
+    <p id="construction-message" class="mt-3 text-sm text-slate-700">
+      {message}
+    </p>
+    <button
+      id="construction-close"
+      type="button"
+      class="mt-6 inline-flex items-center justify-center rounded-full bg-ocean px-6 py-3 text-sm font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-ocean-dark"
+    >
+      {ctaLabel}
+    </button>
+  </div>
+</div>
+
+<script>
+  const notice = document.getElementById('construction-notice');
+  const closeButton = document.getElementById('construction-close');
+  const storageKey = 'constructionNoticeSeen';
+
+  if (notice) {
+    const hasSeen = window.localStorage.getItem(storageKey) === '1';
+
+    if (hasSeen) {
+      notice.remove();
+    } else {
+      notice.style.display = 'flex';
+      closeButton?.addEventListener('click', () => {
+        window.localStorage.setItem(storageKey, '1');
+        notice.remove();
+      });
+    }
+  }
+</script>

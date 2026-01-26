@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import { meta } from '../data/site';
+import ConstructionNotice from '../components/ConstructionNotice.astro';
 
 type Props = {
   title?: string;
@@ -28,7 +29,7 @@ const {
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <title>{title}</title>
-    <link rel="icon" type="image/svg+xml" href="/assets/logo-viajerosde11.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" sizes="any" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -36,8 +37,10 @@ const {
       rel="stylesheet"
     />
   </head>
-  <body class="text-[color:var(--color-ink)]">
+  <body class="text-ink">
     <a class="skip-link" href="#contenido">Saltar al contenido</a>
+    <ConstructionNotice />
     <slot />
   </body>
 </html>
+
