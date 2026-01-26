@@ -1,0 +1,107 @@
+---
+const items = [
+  {
+    title: 'Seguridad',
+    video: '/videos/seguridad.mp4',
+    lines: [
+      'Viajar con tranquilidad es nuestra prioridad.',
+      'Aplicamos protocolos claros en cada excursión.',
+      'Cuidamos cada actividad y cada desplazamiento.',
+      'Padres y colegios pueden confiar en nuestro trabajo.',
+    ],
+  },
+  {
+    title: 'Experiencia',
+    video: '/videos/experiencia.mp4',
+    lines: [
+      'Creamos excursiones que se viven y se recuerdan.',
+      'Cada viaje está cuidadosamente planeado.',
+      'Nuestro equipo conoce bien los destinos.',
+      'Hacemos del grado 11 un cierre inolvidable.',
+    ],
+  },
+  {
+    title: 'Acompañamiento',
+    video: '/videos/acompanamiento.mp4',
+    lines: [
+      'Estamos presentes en todo momento del viaje.',
+      'Guiamos al grupo antes, durante y después.',
+      'Atendemos cualquier necesidad que surja.',
+      'Viajar acompañados brinda mayor tranquilidad.',
+    ],
+  },
+  {
+    title: 'Diversión con propósito',
+    video: '/videos/diversion-con-proposito.mp4',
+    lines: [
+      'La diversión también puede dejar aprendizajes.',
+      'Promovemos la sana convivencia y el respeto.',
+      'Cada actividad fortalece la amistad.',
+      'Disfrutar juntos también es crecer.',
+    ],
+  },
+  {
+    title: 'Responsabilidad',
+    video: '/videos/responsabilidad.mp4',
+    lines: [
+      'Asumimos cada excursión con compromiso.',
+      'Cuidamos cada detalle de la organización.',
+      'Cumplimos lo que prometemos en cada plan.',
+      'La responsabilidad es parte de nuestra esencia.',
+    ],
+  },
+];
+---
+
+<section class="relative">
+  <div class="mx-auto max-w-6xl px-6 pb-20">
+    <div class="mb-10 space-y-3">
+      <h2 class="text-3xl font-bold md:text-4xl">
+        ¿Por qué viajar con <span>Viajer</span><span class="font-body">@</span><span>s de 11?</span>
+      </h2>
+      <p class="text-base text-slate-700">
+        Seguridad, experiencia y acompañamiento en cada excursión de grado 11.
+      </p>
+    </div>
+    <div class="grid gap-6">
+      {items.map((item, index) => {
+        const isEven = index % 2 === 1;
+        return (
+          <article class="rounded-2xl border border-slate-200/70 bg-white/80 p-6 shadow-sm">
+            <div class="grid gap-8 lg:grid-cols-2 lg:items-center">
+              <div class:list={['space-y-4', isEven ? 'lg:order-2' : 'lg:order-1']}>
+                <h3 class="text-2xl font-semibold md:text-3xl">{item.title}</h3>
+                <p class="text-base leading-relaxed text-slate-700 md:text-lg">
+                  {item.lines.map((line) => (
+                    <span class="block">{line}</span>
+                  ))}
+                </p>
+              </div>
+              <div
+                class:list={[
+                  'flex',
+                  'justify-center',
+                  isEven ? 'lg:order-1 lg:justify-self-start' : 'lg:order-2 lg:justify-self-end',
+                ]}
+              >
+                <div class="w-full max-w-[320px] overflow-hidden rounded-2xl">
+                  <video
+                    class="video-clean aspect-[9/16] w-full bg-slate-100 object-cover"
+                    controls
+                    playsinline
+                    preload="metadata"
+                    controlslist="nodownload nofullscreen"
+                    disablepictureinpicture
+                  >
+                    <source src={item.video} type="video/mp4" />
+                    Tu navegador no soporta el video.
+                  </video>
+                </div>
+              </div>
+            </div>
+          </article>
+        );
+      })}
+    </div>
+  </div>
+</section>
