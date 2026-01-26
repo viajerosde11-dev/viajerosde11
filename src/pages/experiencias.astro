@@ -2,21 +2,19 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { meta } from '../data/site';
 import Header from '../components/Header.astro';
-import HeroSection from '../components/HeroSection.astro';
+import ExperiencesSection from '../components/ExperiencesSection.astro';
 import CtaSection from '../components/CtaSection.astro';
-import BenefitsWithVideo from '../components/BenefitsWithVideo.astro';
 import Footer from '../components/Footer.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
 ---
 
 <BaseLayout
-  title={meta.homeTitle}
-  description={meta.homeDescription}
+  title={meta.experiencesTitle}
+  description={meta.experiencesDescription}
 >
   <main id="contenido" class="relative overflow-hidden">
     <Header />
-    <HeroSection />
-    <BenefitsWithVideo />
+    <ExperiencesSection />
     <CtaSection />
 
     <Footer />

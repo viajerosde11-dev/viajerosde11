@@ -4,7 +4,16 @@ export const meta = {
     'Excursiones, planes y experiencias inolvidables para estudiantes de grado 11.',
   homeTitle: 'Viajer@s de 11 | Excursiones y planes para grado 11',
   homeDescription:
-    'Organizamos excursiones y planes de grado 11 con seguridad, acompañamiento y experiencias que se viven una sola vez.',
+    'Organizamos excursiones y planes de grado 11 con seguridad, acompañamiento y experiencias inolvidables.',
+  aboutTitle: 'Quiénes somos | Viajer@s de 11',
+  aboutDescription:
+    'Conoce al equipo que organiza experiencias de grado 11 con acompañamiento, seguridad y logística completa.',
+  plansTitle: 'Planes | Viajer@s de 11',
+  plansDescription:
+    'Descubre los planes de excursiones y experiencias diseñados para estudiantes de grado 11.',
+  experiencesTitle: 'Experiencias | Viajer@s de 11',
+  experiencesDescription:
+    'Momentos y actividades que convierten el viaje de grado 11 en recuerdos inolvidables.',
   ogImage: '/assets/logo-viajerosde11.svg',
 };
 
@@ -13,8 +22,8 @@ export const site = {
   tagline: 'Excursiones de grado 11',
   year: 2026,
   whatsapp: {
-    number: '573108133674',
-    numberDisplay: '+57 310 813 3674',
+    number: '573113496199',
+    numberDisplay: '+57 311 349 6199',
     messages: {
       info: 'Hola Viajer@s de 11, quiero información sobre las excursiones de grado 11.',
       meeting: 'Hola Viajer@s de 11, quiero agendar una reunión.',
@@ -37,10 +46,10 @@ export const links = {
 };
 
 export const navigation = [
-  { href: '#inicio', label: 'Inicio' },
-  { href: '#quienes-somos', label: 'Quiénes somos' },
-  { href: '#planes', label: 'Planes' },
-  { href: '#experiencias', label: 'Experiencias' },
+  { href: '/', label: 'Inicio' },
+  { href: '/quienes-somos', label: 'Quiénes somos' },
+  { href: '/planes', label: 'Planes' },
+  { href: '/experiencias', label: 'Experiencias' },
 ];
 
 export const header = {
@@ -55,12 +64,12 @@ export const hero = {
     'Somos una agencia especializada en experiencias para estudiantes de grado 11. Creamos momentos seguros, emocionantes y llenos de recuerdos inolvidables.',
   ctas: {
     primary: {
-      label: 'Agendar reunión',
+      label: 'Agenda tu reunión',
       href: links.whatsapp.meeting,
     },
     secondary: {
       label: 'Ver planes',
-      href: '#planes',
+      href: '/planes',
     },
   },
   highlights: [
@@ -185,12 +194,12 @@ export const cta = {
   title: '¿Listos para el viaje de grado 11?',
   description: 'Agenda una reunión y recibe una propuesta personalizada para tu colegio.',
   primary: {
-    label: 'Escribir por WhatsApp',
+    label: 'Escríbenos por WhatsApp',
     href: links.whatsapp.base,
   },
   secondary: {
     label: 'Volver al inicio',
-    href: '#inicio',
+    href: '/',
   },
 };
 
