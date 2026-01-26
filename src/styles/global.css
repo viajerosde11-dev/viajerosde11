@@ -1,16 +1,16 @@
 @import "tailwindcss";
 
-@layer base {
-  :root {
-    --color-sand: #ffffff;
-    --color-ink: #1e2326;
-    --color-ocean: #0b6ea8;
-    --color-ocean-dark: #06517c;
-    --color-sun: #ffb020;
-    --color-coral: #f46d4f;
-    --color-mint: #5cc6b0;
-  }
+@theme {
+  --color-sand: #ffffff;
+  --color-ink: #1e2326;
+  --color-ocean: #0b6ea8;
+  --color-ocean-dark: #06517c;
+  --color-sun: #ffb020;
+  --color-coral: #f46d4f;
+  --color-mint: #5cc6b0;
+}
 
+@layer base {
   * {
     box-sizing: border-box;
   }
@@ -46,6 +46,10 @@
   .glass-card {
     background: rgba(255, 255, 255, 0.75);
     border: 1px solid rgba(255, 255, 255, 0.5);
+  }
+
+  .font-body {
+    font-family: "Sora", "Segoe UI", system-ui, sans-serif;
   }
 
   @supports ((-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px))) {
@@ -99,5 +103,10 @@
 
   .whatsapp-fab svg {
     display: block;
+  }
+
+  .video-clean::-webkit-media-controls-panel,
+  .video-clean::-webkit-media-controls-enclosure {
+    background-color: transparent;
   }
 }
