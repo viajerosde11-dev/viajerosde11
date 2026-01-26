@@ -6,7 +6,7 @@ import { plans } from '../data/site';
   <div class="mx-auto max-w-6xl px-6 py-16">
     <div class="flex flex-wrap items-end justify-between gap-6">
       <div>
-        <p class="text-xs font-semibold uppercase tracking-[0.3em] text-[color:var(--color-ocean-dark)]">
+        <p class="text-xs font-semibold uppercase tracking-[0.3em] text-ocean-dark">
           {plans.kicker}
         </p>
         <h2 class="mt-2 text-3xl font-bold md:text-4xl">
@@ -17,7 +17,7 @@ import { plans } from '../data/site';
         href={plans.cta.href}
         target="_blank"
         rel="noreferrer"
-        class="rounded-full bg-[color:var(--color-ocean)] px-6 py-3 text-sm font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-[color:var(--color-ocean-dark)]"
+        class="rounded-full bg-ocean px-6 py-3 text-sm font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-ocean-dark"
       >
         {plans.cta.label}
       </a>
@@ -35,7 +35,7 @@ import { plans } from '../data/site';
               <li>✔ {feature}</li>
             ))}
           </ul>
-          <div class="mt-6 rounded-2xl bg-white/70 p-4 text-sm font-semibold text-[color:var(--color-ocean-dark)]">
+          <div class="mt-6 rounded-2xl bg-white/70 p-4 text-sm font-semibold text-ocean-dark">
             {card.note}
           </div>
         </article>
@@ -43,3 +43,4 @@ import { plans } from '../data/site';
     </div>
   </div>
 </section>
+
