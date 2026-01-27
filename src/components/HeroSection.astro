@@ -27,9 +27,6 @@ import { hero } from '../data/site';
       </div>
     </div>
     <div class="mx-auto max-w-6xl px-6 py-10 text-center">
-      <p class="text-base font-semibold uppercase tracking-[0.3em] text-ocean-dark md:text-lg">
-        Agenda tu reunión o ve los planes
-      </p>
       <div class="mt-4 flex flex-wrap justify-center gap-4">
         <a
           href={hero.ctas.primary.href}
@@ -46,7 +43,100 @@ import { hero } from '../data/site';
           {hero.ctas.secondary.label}
         </a>
       </div>
+
+      <div class="mt-10 w-full max-w-[300px] text-left">
+        <div class="loading-panel">
+          <div class="flex items-center justify-between text-[10px] uppercase tracking-[0.26em] text-slate-500">
+            <span id="loading-text">Alistando tiquetes...</span>
+            <span id="loading-percent" class="font-semibold text-ocean">20%</span>
+          </div>
+          <div class="loading-track">
+            <div id="loading-bar" class="loading-bar">
+              <span class="loading-shimmer"></span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
+
+<style>
+  .loading-panel {
+    border-radius: 0.9rem;
+    border: none;
+    background: transparent;
+    padding: 0;
+    box-shadow: none;
+  }
+
+  .loading-track {
+    position: relative;
+    margin-top: 0.45rem;
+    height: 5px;
+    width: 100%;
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.12);
+    overflow: hidden;
+  }
+
+  .loading-bar {
+    height: 100%;
+    width: 0%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #0b6ea8, #5cc6b0, #ffb020);
+    transition: width 1.4s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .loading-shimmer {
+    position: absolute;
+    top: 0;
+    left: -40%;
+    height: 100%;
+    width: 40%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.7), transparent);
+    animation: shimmer 1.6s linear infinite;
+  }
+
+  @keyframes shimmer {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(220%);
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const steps = [
+      { text: 'Alistando tiquetes...', percent: 20 },
+      { text: 'Tomando el vuelo...', percent: 50 },
+      { text: 'Llegando al destino...', percent: 80 },
+      { text: 'Disfrutando la experiencia', percent: 100 },
+    ];
+
+    const textEl = document.getElementById('loading-text');
+    const percentEl = document.getElementById('loading-percent');
+    const barEl = document.getElementById('loading-bar');
+
+    if (!textEl || !percentEl || !barEl) return;
+
+    let index = 0;
+
+    const updateLoading = () => {
+      const step = steps[index];
+      textEl.textContent = step.text;
+      percentEl.textContent = `${step.percent}%`;
+      barEl.style.width = `${step.percent}%`;
+      index = (index + 1) % steps.length;
+    };
+
+    updateLoading();
+    setInterval(updateLoading, 2000);
+  });
+</script>
 
