@@ -23,7 +23,7 @@ export const site = {
   year: 2026,
   whatsapp: {
     number: '573113496199',
-    numberDisplay: '+57 311 349 6199',
+    numberDisplay: '+57 3113496199',
     messages: {
       info: 'Hola Viajer@s de 11, quiero información sobre las excursiones de grado 11.',
       meeting: 'Hola Viajer@s de 11, quiero agendar una reunión.',

@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --color-sand: #ffffff;
+  --color-sand: #fff6ea;
   --color-ink: #1e2326;
   --color-ocean: #0b6ea8;
   --color-ocean-dark: #06517c;
@@ -22,6 +22,7 @@
   body {
     font-family: "Sora", "Segoe UI", system-ui, sans-serif;
     background-color: #ffffff;
+    background-image: none;
     min-height: 100vh;
   }
 
@@ -44,8 +45,9 @@
   }
 
   .glass-card {
-    background: rgba(255, 255, 255, 0.75);
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.82);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    box-shadow: 0 20px 45px rgba(11, 110, 168, 0.12);
   }
 
   .font-body {
@@ -108,5 +110,57 @@
   .video-clean::-webkit-media-controls-panel,
   .video-clean::-webkit-media-controls-enclosure {
     background-color: transparent;
+  }
+
+  .footer-waves {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -8px;
+    height: 200px;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .footer-waves::before,
+  .footer-waves::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 200%;
+    left: -50%;
+    will-change: transform;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: 100% 100%;
+  }
+
+  .footer-waves::before {
+    background-image: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2000' height='240' viewBox='0 0 2000 240' preserveAspectRatio='none'%3E%3Cpath d='M0 140c200-40 400-55 600-40s400 70 600 55 400-80 800-30v115H0z' fill='%230B6EA8' fill-opacity='0.22'/%3E%3Cpath d='M0 170c220-45 460-55 720-30 260 25 480 90 760 60 280-30 360-70 520-55v95H0z' fill='%230A5F91' fill-opacity='0.2'/%3E%3Cpath d='M0 195c260-50 520-55 780-20 260 35 520 110 780 70 260-40 320-80 460-60v80H0z' fill='%230E80C1' fill-opacity='0.18'/%3E%3Cpath d='M0 210c300-55 600-60 900-15 300 45 600 125 900 75v60H0z' fill='%233A9FD9' fill-opacity='0.16'/%3E%3C/svg%3E");
+    animation: waveDrift 16s linear infinite;
+  }
+
+  .footer-waves::after {
+    background-image: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2000' height='240' viewBox='0 0 2000 240' preserveAspectRatio='none'%3E%3Cpath d='M0 150c240-45 460-55 680-30 220 25 460 85 700 55 240-30 380-70 620-55v95H0z' fill='%230A5F91' fill-opacity='0.16'/%3E%3Cpath d='M0 190c280-55 560-60 840-20 280 40 560 110 840 60 280-50 360-80 520-60v70H0z' fill='%230B6EA8' fill-opacity='0.14'/%3E%3C/svg%3E");
+    animation: waveDriftReverse 22s linear infinite;
+  }
+
+  @keyframes waveDrift {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(20%);
+    }
+  }
+
+  @keyframes waveDriftReverse {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-20%);
+    }
   }
 }
