@@ -5,14 +5,14 @@ import { footer, site } from '../data/site';
 <footer class="relative overflow-hidden border-t border-white/70 py-10 pb-24">
   <div class="relative z-10 mx-auto max-w-6xl px-6">
     <div class="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-      <div class="space-y-2 text-sm text-slate-600">
+      <div class="space-y-2 text-sm text-slate-200">
         <p>© {site.year} {site.name}. {footer.rights}</p>
         <div class="flex flex-wrap items-center gap-3"></div>
       </div>
 
       <div class="flex flex-col gap-3">
         <div class="space-y-3">
-          <p class="text-[10px] font-semibold uppercase tracking-[0.3em] text-slate-500">
+          <p class="text-[10px] font-semibold uppercase tracking-[0.3em] text-slate-300">
             Síguenos y vive la experiencia
           </p>
           <div class="flex items-center gap-3">
@@ -22,7 +22,7 @@ import { footer, site } from '../data/site';
               target="_blank"
               rel="noreferrer"
               class:list={[
-                'inline-flex h-12 w-12 items-center justify-center rounded-full border border-slate-200 text-slate-600 transition',
+                'inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/30 text-slate-200 transition',
                 social.name === 'Instagram' && 'hover:border-[#e4405f] hover:text-[#e4405f]',
                 social.name === 'TikTok' && 'hover:border-[#111111] hover:text-[#111111]',
                 social.name === 'Facebook' && 'hover:border-[#1877f2] hover:text-[#1877f2]',
@@ -58,13 +58,13 @@ import { footer, site } from '../data/site';
           ))}
           </div>
         </div>
-        <p class="text-xs text-slate-600">
+        <p class="text-xs text-slate-200">
           Desarrollado por{' '}
           <a
             href={footer.developer.url}
             target="_blank"
             rel="noreferrer"
-            class="font-medium text-ocean-dark hover:text-ocean"
+            class="font-medium text-sky-200 hover:text-sky-100"
           >
             {footer.developer.name}
           </a>
