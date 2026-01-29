@@ -21,9 +21,27 @@
 
   body {
     font-family: "Sora", "Segoe UI", system-ui, sans-serif;
-    background-color: #ffffff;
+    background-color: #0a1326;
     background-image: none;
+    position: relative;
+    isolation: isolate;
     min-height: 100vh;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: -20%;
+    z-index: -1;
+    pointer-events: none;
+    background-repeat: repeat;
+    background-position: 0 0, 160px 120px;
+    background-size: 320px 280px, 440px 360px;
+    background-image:
+      radial-gradient(circle, rgba(207, 230, 255, 0.55) 1px, transparent 1.6px),
+      radial-gradient(circle, rgba(207, 230, 255, 0.35) 1px, transparent 1.8px);
+    will-change: background-position;
+    animation: starDriftA 120s linear infinite;
   }
 
   h1,
@@ -112,6 +130,11 @@
     background-color: transparent;
   }
 
+  .video-clean {
+    display: block;
+    border-radius: inherit;
+  }
+
   .footer-waves {
     position: absolute;
     left: 0;
@@ -161,6 +184,21 @@
     }
     100% {
       transform: translateX(-20%);
+    }
+  }
+
+  @keyframes starDriftA {
+    0% {
+      background-position: 0 0, 160px 120px;
+    }
+    33% {
+      background-position: 80px 110px, 120px 180px;
+    }
+    66% {
+      background-position: 160px 60px, 40px 240px;
+    }
+    100% {
+      background-position: 240px 160px, -80px 320px;
     }
   }
 }
