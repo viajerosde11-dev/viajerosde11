@@ -8,9 +8,9 @@ const nameParts = site.name.split('@');
   <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
     <div class="flex items-center gap-3">
       <img
-        src="/assets/logo-viajerosde11.svg"
+        src="/assets/logo-viajerosde11.svg?v=2"
         alt={`Logo ${site.name}`}
-        class="h-11 w-11 rounded-full border border-white/60 bg-white/90 p-1 shadow-sm"
+        class="h-24 w-24"
       />
       <div>
         <p class="font-display text-base font-semibold">
@@ -20,7 +20,7 @@ const nameParts = site.name.split('@');
             site.name
           )}
         </p>
-        <p class="text-[10px] uppercase tracking-[0.25em] text-ocean-dark">
+        <p class="text-[10px] uppercase tracking-[0.25em] text-sky-200">
           {site.tagline}
         </p>
       </div>
@@ -37,9 +37,12 @@ const nameParts = site.name.split('@');
         <summary class="list-none rounded-full border border-ocean-dark/60 bg-white/80 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-ocean-dark shadow-sm backdrop-blur">
           {header.menuLabel}
         </summary>
-        <div class="absolute right-0 mt-3 w-56 rounded-2xl border border-white/70 bg-white/95 p-3 shadow-xl">
+        <div class="absolute right-0 mt-3 w-56 rounded-2xl border border-white/70 bg-white/95 p-3 text-slate-700 shadow-xl">
           {navigation.map((item) => (
-            <a href={item.href} class="block rounded-lg px-3 py-2 text-sm hover:bg-slate-100">
+            <a
+              href={item.href}
+              class="block rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"
+            >
               {item.label}
             </a>
           ))}
