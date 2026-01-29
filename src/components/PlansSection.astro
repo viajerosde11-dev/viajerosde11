@@ -6,7 +6,7 @@ import { plans } from '../data/site';
   <div class="mx-auto max-w-6xl px-6 py-16">
     <div class="flex flex-wrap items-end justify-between gap-6">
       <div>
-        <p class="text-xs font-semibold uppercase tracking-[0.3em] text-ocean-dark">
+        <p class="text-xs font-semibold uppercase tracking-[0.3em] text-sky-200">
           {plans.kicker}
         </p>
         <h2 class="mt-2 text-3xl font-bold md:text-4xl">
@@ -24,7 +24,7 @@ import { plans } from '../data/site';
     </div>
     <div class="mt-10 grid gap-6 lg:grid-cols-3">
       {plans.cards.map((card) => (
-        <article class="glass-card rounded-2rem p-6 shadow-lg">
+        <article class="glass-card rounded-[2rem] p-6 text-ink shadow-lg">
           <p class="text-xs font-semibold uppercase" style={`color: ${card.labelColor}`}>
             {card.label}
           </p>
