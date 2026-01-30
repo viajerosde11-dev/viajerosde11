@@ -20,14 +20,17 @@ const nameParts = site.name.split('@');
             site.name
           )}
         </p>
-        <p class="text-[10px] uppercase tracking-[0.25em] text-sky-200">
+        <p class="text-[10px] uppercase tracking-[0.25em] text-ocean-dark">
           {site.tagline}
         </p>
       </div>
     </div>
     <nav class="hidden items-center gap-6 rounded-full border border-slate-200/70 bg-white/80 px-5 py-2 text-sm font-medium shadow-sm backdrop-blur md:flex">
       {navigation.map((item) => (
-        <a href={item.href} class="text-slate-600 transition hover:text-ocean">
+        <a
+          href={item.href}
+          class="rounded-full px-3 py-1 text-slate-600 transition hover:bg-ocean hover:text-white"
+        >
           {item.label}
         </a>
       ))}
