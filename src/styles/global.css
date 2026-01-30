@@ -21,7 +21,7 @@
 
   body {
     font-family: "Sora", "Segoe UI", system-ui, sans-serif;
-    background-color: #0a1326;
+    background-color: #ffffff;
     background-image: none;
     position: relative;
     isolation: isolate;
@@ -35,13 +35,14 @@
     z-index: -1;
     pointer-events: none;
     background-repeat: repeat;
-    background-position: 0 0, 160px 120px;
-    background-size: 320px 280px, 440px 360px;
+    background-position: 0 0, 140px 100px, 260px 180px;
+    background-size: 220px 200px, 300px 260px, 420px 380px;
     background-image:
-      radial-gradient(circle, rgba(207, 230, 255, 0.55) 1px, transparent 1.6px),
-      radial-gradient(circle, rgba(207, 230, 255, 0.35) 1px, transparent 1.8px);
+      radial-gradient(circle, rgba(11, 110, 168, 0.7) 1.7px, transparent 2.6px),
+      radial-gradient(circle, rgba(11, 110, 168, 0.5) 1.4px, transparent 2.2px),
+      radial-gradient(circle, rgba(255, 159, 64, 0.65) 1.6px, transparent 2.4px);
     will-change: background-position;
-    animation: starDriftA 120s linear infinite;
+    animation: starDriftA 80s linear infinite;
   }
 
   h1,
