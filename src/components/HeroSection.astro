@@ -16,20 +16,25 @@ import { hero } from '../data/site';
           controlslist="nodownload nofullscreen"
           disablepictureinpicture
         >
-          <source src="/videos/Beach.mp4" type="video/mp4" />
+          <source src="/videos/Beach-v2.mp4" type="video/mp4" />
           Tu navegador no soporta el video.
         </video>
-        <div class="pointer-events-none absolute bottom-3 right-3 rounded-full bg-white/90 p-2 shadow-md backdrop-blur">
+        <div class="pointer-events-none absolute bottom-3 right-3 rounded-full bg-white/80 p-1.5 shadow-md backdrop-blur-sm">
           <img
             src="/assets/logo-viajerosde11.svg?v=2"
             alt="Logo Viajer@s de 11"
-            class="h-14 w-14"
+            class="h-10 w-10"
           />
         </div>
-        <div class="absolute inset-x-0 bottom-0 bg-slate-900/55 px-6 py-3 text-white">
-          <h3 class="text-lg font-semibold leading-snug md:text-xl">
-            Hacemos realidad tu excursión de grado 11
-          </h3>
+        <div class="pointer-events-none absolute inset-0 flex items-center justify-center p-6">
+          <div class="max-w-xl rounded-md bg-slate-900/58 px-7 py-6 text-center text-white shadow-2xl backdrop-blur-lg">
+            <p class="font-display text-xl font-semibold leading-snug md:text-3xl">
+              Hacemos realidad
+            </p>
+            <p class="font-display mt-1 text-xl font-semibold leading-snug md:text-3xl">
+              tu excursión de grado 11
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -39,7 +44,7 @@ import { hero } from '../data/site';
           href={hero.ctas.primary.href}
           target="_blank"
           rel="noreferrer"
-          class="inline-flex items-center justify-center rounded-full bg-coral px-6 py-3 text-sm font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-[#e85c3c]"
+          class="inline-flex items-center justify-center rounded-full bg-ocean px-6 py-3 text-sm font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-ocean-dark"
         >
           {hero.ctas.primary.label}
         </a>
@@ -53,7 +58,7 @@ import { hero } from '../data/site';
 
       <div class="mt-10 w-full max-w-[300px] text-left">
         <div class="loading-panel">
-          <div class="flex items-center justify-between text-[10px] uppercase tracking-[0.26em] text-slate-600">
+          <div class="flex items-center justify-between text-sm uppercase tracking-[0.2em] text-slate-600">
             <span id="loading-text">Alistando tiquetes...</span>
             <span id="loading-percent" class="font-semibold text-ocean">20%</span>
           </div>
