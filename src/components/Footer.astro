@@ -16,46 +16,63 @@ import { footer, site } from '../data/site';
             Síguenos y vive la experiencia
           </p>
           <div class="flex items-center gap-3">
-          {footer.socials.map((social) => (
-            <a
-              href={social.href}
-              target="_blank"
-              rel="noreferrer"
-              class:list={[
-                'inline-flex h-12 w-12 items-center justify-center rounded-full border border-slate-200 text-slate-600 transition',
-                social.name === 'Instagram' && 'hover:border-[#e4405f] hover:text-[#e4405f]',
-                social.name === 'TikTok' && 'hover:border-[#111111] hover:text-[#111111]',
-                social.name === 'Facebook' && 'hover:border-[#1877f2] hover:text-[#1877f2]',
-              ]}
-              aria-label={social.name}
-              title={social.name}
-            >
-              {social.name === 'Instagram' && (
-                <svg viewBox="0 0 24 24" class="h-7 w-7" aria-hidden="true">
-                  <path
-                    fill="currentColor"
-                    d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9A5.5 5.5 0 0 1 16.5 22h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 1.8A3.7 3.7 0 0 0 3.8 7.5v9a3.7 3.7 0 0 0 3.7 3.7h9a3.7 3.7 0 0 0 3.7-3.7v-9a3.7 3.7 0 0 0-3.7-3.7h-9zm9.75 2.1a1.05 1.05 0 1 1 0 2.1 1.05 1.05 0 0 1 0-2.1zM12 7.2a4.8 4.8 0 1 1 0 9.6 4.8 4.8 0 0 1 0-9.6zm0 1.8a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"
-                  />
-                </svg>
-              )}
-              {social.name === 'TikTok' && (
-                <svg viewBox="0 0 24 24" class="h-7 w-7" aria-hidden="true">
-                  <path
-                    fill="currentColor"
-                    d="M15.5 2c.4 2.1 1.9 3.6 4 4v3.1c-1.6 0-3.1-.5-4.4-1.4v7.2c0 3.5-2.8 6.4-6.4 6.4-3.1 0-5.7-2.2-6.3-5.1-.7-3.8 2.3-7.3 6.1-7.3.6 0 1.1.1 1.6.2v3.3c-.4-.2-.9-.3-1.4-.3-1.8 0-3.2 1.5-3.2 3.2 0 1.9 1.7 3.4 3.6 3.1 1.4-.2 2.4-1.5 2.4-2.9V2h3.6z"
-                  />
-                </svg>
-              )}
-              {social.name === 'Facebook' && (
-                <svg viewBox="0 0 24 24" class="h-7 w-7" aria-hidden="true">
-                  <path
-                    fill="currentColor"
-                    d="M13.5 9H16l.4-3H13.5V4.7c0-.9.3-1.5 1.6-1.5H16V1h-2.1C11.7 1 10 2.4 10 4.9V6H7.5v3H10v8h3.5V9z"
-                  />
-                </svg>
-              )}
-            </a>
-          ))}
+            {footer.socials.map((social) => (
+              <a
+                href={social.href}
+                target="_blank"
+                rel="noreferrer"
+                class:list={[
+                  'inline-flex h-12 w-12 items-center justify-center rounded-full shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2',
+                  social.name === 'Instagram' &&
+                    'bg-[radial-gradient(circle_at_30%_107%,#fdf497_0%,#fdf497_5%,#fd5949_45%,#d6249f_60%,#285AEB_90%)] text-white focus-visible:outline-[#d6249f]',
+                  social.name === 'TikTok' &&
+                    'bg-[#0f0f0f] text-white focus-visible:outline-[#25f4ee]',
+                  social.name === 'Facebook' &&
+                    'bg-[#1877f2] text-white focus-visible:outline-[#1877f2]',
+                ]}
+                aria-label={social.name}
+                title={social.name}
+              >
+                {social.name === 'Instagram' && (
+                  <svg viewBox="0 0 24 24" class="h-7 w-7" aria-hidden="true">
+                    <path
+                      fill="currentColor"
+                      d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9A5.5 5.5 0 0 1 16.5 22h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 1.8A3.7 3.7 0 0 0 3.8 7.5v9a3.7 3.7 0 0 0 3.7 3.7h9a3.7 3.7 0 0 0 3.7-3.7v-9a3.7 3.7 0 0 0-3.7-3.7h-9zm9.75 2.1a1.05 1.05 0 1 1 0 2.1 1.05 1.05 0 0 1 0-2.1zM12 7.2a4.8 4.8 0 1 1 0 9.6 4.8 4.8 0 0 1 0-9.6zm0 1.8a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"
+                    />
+                  </svg>
+                )}
+                {social.name === 'TikTok' && (
+                  <span class="relative h-7 w-7" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" class="absolute inset-0 h-7 w-7 -translate-x-[1px] text-[#25f4ee]">
+                      <path
+                        fill="currentColor"
+                        d="M15.5 2c.4 2.1 1.9 3.6 4 4v3.1c-1.6 0-3.1-.5-4.4-1.4v7.2c0 3.5-2.8 6.4-6.4 6.4-3.1 0-5.7-2.2-6.3-5.1-.7-3.8 2.3-7.3 6.1-7.3.6 0 1.1.1 1.6.2v3.3c-.4-.2-.9-.3-1.4-.3-1.8 0-3.2 1.5-3.2 3.2 0 1.9 1.7 3.4 3.6 3.1 1.4-.2 2.4-1.5 2.4-2.9V2h3.6z"
+                      />
+                    </svg>
+                    <svg viewBox="0 0 24 24" class="absolute inset-0 h-7 w-7 translate-x-[1px] text-[#fe2c55]">
+                      <path
+                        fill="currentColor"
+                        d="M15.5 2c.4 2.1 1.9 3.6 4 4v3.1c-1.6 0-3.1-.5-4.4-1.4v7.2c0 3.5-2.8 6.4-6.4 6.4-3.1 0-5.7-2.2-6.3-5.1-.7-3.8 2.3-7.3 6.1-7.3.6 0 1.1.1 1.6.2v3.3c-.4-.2-.9-.3-1.4-.3-1.8 0-3.2 1.5-3.2 3.2 0 1.9 1.7 3.4 3.6 3.1 1.4-.2 2.4-1.5 2.4-2.9V2h3.6z"
+                      />
+                    </svg>
+                    <svg viewBox="0 0 24 24" class="relative h-7 w-7 text-white">
+                      <path
+                        fill="currentColor"
+                        d="M15.5 2c.4 2.1 1.9 3.6 4 4v3.1c-1.6 0-3.1-.5-4.4-1.4v7.2c0 3.5-2.8 6.4-6.4 6.4-3.1 0-5.7-2.2-6.3-5.1-.7-3.8 2.3-7.3 6.1-7.3.6 0 1.1.1 1.6.2v3.3c-.4-.2-.9-.3-1.4-.3-1.8 0-3.2 1.5-3.2 3.2 0 1.9 1.7 3.4 3.6 3.1 1.4-.2 2.4-1.5 2.4-2.9V2h3.6z"
+                      />
+                    </svg>
+                  </span>
+                )}
+                {social.name === 'Facebook' && (
+                  <svg viewBox="0 0 24 24" class="h-8 w-8 translate-x-[0.2px] translate-y-[0.8px]" aria-hidden="true">
+                    <path
+                      fill="currentColor"
+                      d="M13.5 9H16l.4-3H13.5V4.7c0-.9.3-1.5 1.6-1.5H16V1h-2.1C11.7 1 10 2.4 10 4.9V6H7.5v3H10v8h3.5V9z"
+                    />
+                  </svg>
+                )}
+              </a>
+            ))}
           </div>
         </div>
         <p class="text-xs text-slate-600">
