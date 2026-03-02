@@ -1,0 +1,87 @@
+---
+import { links } from '../data/site';
+
+const quickPoints = [
+  'Te ayudamos a elegir el plan segun presupuesto y cantidad de estudiantes.',
+  'Puedes combinar transporte aereo y terrestre segun el destino.',
+  'La propuesta llega con detalles claros de hotel, actividades y acompanamiento.',
+];
+
+const faqs = [
+  {
+    question: 'Que incluye la cotizacion inicial?',
+    answer:
+      'Incluye precio estimado por estudiante, transporte, hospedaje, alimentacion y actividades principales.',
+  },
+  {
+    question: 'Cuanto tarda la propuesta personalizada?',
+    answer:
+      'Normalmente entregamos una propuesta en menos de 24 horas despues de validar datos del curso.',
+  },
+  {
+    question: 'Se puede ajustar el plan por presupuesto?',
+    answer:
+      'Si. Ajustamos destino, duracion y tipo de transporte para construir una opcion viable para tu promocion.',
+  },
+];
+---
+
+<section class="relative">
+  <div class="mx-auto max-w-6xl px-6 pb-20">
+    <div class="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+      <article class="glass-card rounded-[2.2rem] p-8 text-ink">
+        <p class="text-xs font-semibold uppercase tracking-[0.26em] text-ocean-dark">
+          Siguiente paso
+        </p>
+        <h2 class="mt-3 text-2xl font-bold md:text-3xl">
+          Compara opciones y define el plan ideal para tu curso
+        </h2>
+        <p class="mt-3 text-sm text-slate-700 md:text-base">
+          Cierra la decision con datos claros de logistica, seguridad y presupuesto para toda la promocion.
+        </p>
+
+        <ul class="mt-5 space-y-2 text-sm text-slate-700">
+          {quickPoints.map((item) => (
+            <li class="flex items-start gap-2">
+              <span class="mt-1.5 h-2.5 w-2.5 rounded-full bg-ocean"></span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a
+            href={links.whatsapp.quote}
+            target="_blank"
+            rel="noreferrer"
+            class="rounded-full bg-ocean px-6 py-3 text-sm font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-ocean-dark"
+          >
+            Cotizar por WhatsApp
+          </a>
+          <a
+            href={links.whatsapp.meeting}
+            target="_blank"
+            rel="noreferrer"
+            class="rounded-full border border-ocean-dark px-6 py-3 text-sm font-semibold text-ocean-dark transition hover:-translate-y-0.5 hover:bg-white/70"
+          >
+            Agendar reunion
+          </a>
+        </div>
+      </article>
+
+      <article class="rounded-[2.2rem] border border-white/70 bg-white/85 p-7 shadow-[0_16px_36px_rgba(11,110,168,0.12)]">
+        <h3 class="text-xl font-bold text-ink">Preguntas frecuentes de planes</h3>
+        <div class="mt-4 space-y-3">
+          {faqs.map((item) => (
+            <details class="rounded-xl border border-slate-200/70 bg-white/80 px-4 py-3">
+              <summary class="cursor-pointer list-none text-sm font-semibold text-ocean-dark">
+                {item.question}
+              </summary>
+              <p class="mt-2 text-sm text-slate-700">{item.answer}</p>
+            </details>
+          ))}
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
