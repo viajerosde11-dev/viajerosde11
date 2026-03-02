@@ -1,17 +1,47 @@
----
+﻿---
 import { plans } from '../data/site';
+
+const planImages = [
+  '/planes/imagenes/san-andres.jpg',
+  '/planes/imagenes/santa-marta.jpg',
+  '/planes/imagenes/cartagena.jpg',
+  '/planes/imagenes/eje-cafetero.jpg',
+  '/planes/imagenes/san-gil.jpg',
+  '/planes/imagenes/santa-marta-cartagena-avion.jpg',
+  '/planes/imagenes/santa-marta-cartagena-bus.jpg',
+];
+
+const getImageForPlan = (index: number) => planImages[index % planImages.length];
+const chipPalette = [
+  'var(--color-ocean)',
+  'var(--color-coral)',
+  'var(--color-mint)',
+  'var(--color-sun)',
+];
+const getChipColor = (index: number) => chipPalette[index % chipPalette.length];
+
+const transportIcon = {
+  plane:
+    '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21 16.5a1 1 0 0 1-1.4.9L13 14.7V18l2 1.5v1l-3-1-3 1v-1l2-1.5v-3.3L4.4 17.4A1 1 0 0 1 3 16.5l7-4V9.8L7.8 8.5v-1l3.2.8V5.5a1 1 0 1 1 2 0v2.8l3.2-.8v1L14 9.8v2.7l7 4z"/></svg>',
+  bus:
+    '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M5 3h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-1a2.5 2.5 0 0 1-5 0h-2a2.5 2.5 0 0 1-5 0H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm0 3v6h14V6H5zm3 10a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm8 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/></svg>',
+} as const;
 ---
 
 <section id="planes" class="relative">
   <div class="mx-auto max-w-6xl px-6 py-16">
-    <div class="flex flex-wrap items-end justify-between gap-6">
-      <div>
+    <div class="mb-8 flex flex-wrap items-end justify-between gap-6">
+      <div class="max-w-3xl">
         <p class="text-xs font-semibold uppercase tracking-[0.3em] text-ocean-dark">
           {plans.kicker}
         </p>
-        <h2 class="mt-2 text-3xl font-bold md:text-4xl">
-        {plans.title}
+        <h2 class="mt-2 text-3xl font-bold text-ink md:text-4xl">
+          Descubre destinos, hoteles y paquetes para grado 11
         </h2>
+        <p class="mt-3 text-sm text-slate-700 md:text-base">
+          En Viajer@s de 11 encuentras planes turisticos completos para promociones: vuelos,
+          hospedaje, actividades y acompanamiento continuo para estudiantes, familias y colegios.
+        </p>
       </div>
       <a
         href={plans.cta.href}
@@ -23,380 +53,174 @@ import { plans } from '../data/site';
       </a>
     </div>
 
-    <div class="journey-strip mt-8" aria-hidden="true">
-      <div class="journey-track">
-        <div class="journey-line"></div>
-        <div class="journey-stop start">Salida</div>
-        <div class="journey-stop end">Destino</div>
-
-        <div class="journey-cloud cloud-a">
-          <svg viewBox="0 0 120 60" aria-hidden="true">
-            <path d="M35 50h45a20 20 0 1 0-3-39 27 27 0 0 0-51 9A15 15 0 0 0 35 50z"></path>
-          </svg>
-        </div>
-
-        <div class="journey-cloud cloud-b">
-          <svg viewBox="0 0 120 60" aria-hidden="true">
-            <path d="M35 50h45a20 20 0 1 0-3-39 27 27 0 0 0-51 9A15 15 0 0 0 35 50z"></path>
-          </svg>
-        </div>
-
-        <div class="journey-vehicle plane" title="Ruta aérea">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M21 16.5a1 1 0 0 1-1.4.9L13 14.7V18l2 1.5v1l-3-1-3 1v-1l2-1.5v-3.3L4.4 17.4A1 1 0 0 1 3 16.5l7-4V9.8L7.8 8.5v-1l3.2.8V5.5a1 1 0 1 1 2 0v2.8l3.2-.8v1L14 9.8v2.7l7 4z"></path>
-          </svg>
-        </div>
-
-        <div class="journey-vehicle bus" title="Ruta terrestre">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M5 3h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-1a2.5 2.5 0 0 1-5 0h-2a2.5 2.5 0 0 1-5 0H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm0 3v6h14V6H5zm3 10a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm8 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"></path>
-          </svg>
-        </div>
-      </div>
-    </div>
-
-    <div class="mt-10 grid gap-6 lg:grid-cols-3">
-      {plans.cards.map((card, index) => (
-        <article
-          class:list={[
-            'plan-card reveal-card glass-card rounded-[2rem] p-6 text-ink shadow-lg',
-            index === plans.cards.length - 1 &&
-              'md:col-span-2 md:max-w-xl md:justify-self-center lg:col-span-1 lg:col-start-2',
-          ]}
-          style={`--card-delay: ${index * 90}ms;`}
-          data-plan-card
-        >
-          <span class="plan-stamp" aria-hidden="true">Promo 2026</span>
-          <p class="text-xs font-semibold uppercase" style={`color: ${card.labelColor}`}>
-            {card.label}
-          </p>
-          <h3 class="mt-3 text-2xl font-bold">{card.title}</h3>
-          <p class="mt-3 text-sm text-slate-700">{card.description}</p>
-          <p class="mt-3 rounded-xl bg-white/70 p-3 text-sm text-slate-700">
-            <span class="font-semibold text-ocean-dark">Descripción del plan:</span> {card.planDescription}
-          </p>
-          <ul class="mt-4 space-y-2 text-sm text-slate-700">
-            {card.features.map((feature) => (
-              <li>✔ {feature}</li>
-            ))}
-          </ul>
-          <div class="mt-6 rounded-2xl bg-white/70 p-4 text-sm font-semibold text-ocean-dark">
-            {card.note}
-          </div>
-          <div class="mt-4 flex flex-wrap gap-3">
-            <a
-              href={card.pdf.href}
-              target="_blank"
-              rel="noreferrer"
-              class="rounded-full bg-ocean px-4 py-2 text-xs font-semibold uppercase tracking-[0.08em] text-white transition hover:bg-ocean-dark"
-            >
-              {card.pdf.label}
-            </a>
-            <a
-              href={card.pdf.href}
-              download
-              class="rounded-full border border-ocean-dark px-4 py-2 text-xs font-semibold uppercase tracking-[0.08em] text-ocean-dark transition hover:bg-white/70"
-            >
-              Descargar PDF
-            </a>
-          </div>
-        </article>
-      ))}
+    <div class="plan-grid">
+      {plans.cards.map((card, index) => {
+        const transportTypes = index === 0 ? (['plane'] as const) : (['plane', 'bus'] as const);
+        const isLast = index === plans.cards.length - 1;
+        return (
+          <article
+            class:list={[
+              'plan-media-card',
+              isLast &&
+                'md:col-span-2 md:w-full md:max-w-[26rem] md:justify-self-center lg:col-span-1 lg:col-start-2 lg:max-w-none',
+            ]}
+          >
+            <img
+              src={getImageForPlan(index)}
+              alt={card.title}
+              loading="lazy"
+              decoding="async"
+              class="plan-media-image"
+            />
+            <div class="plan-media-overlay" aria-hidden="true"></div>
+            <span class="transport-stack" aria-hidden="true">
+              {transportTypes.map((type) => (
+                <span class="transport-icon">
+                  <span set:html={transportIcon[type]} />
+                </span>
+              ))}
+            </span>
+            <div class="plan-media-content">
+              <span class="plan-media-chip" style={`--chip-color: ${getChipColor(index)};`}>
+                {card.label}
+              </span>
+              <h3 class="mt-3 text-xl font-bold text-white md:text-2xl">{card.title}</h3>
+              <p class="mt-2 text-sm text-white/90">{card.description}</p>
+              <a
+                href={card.pdf.href}
+                target="_blank"
+                rel="noreferrer"
+                class="plan-media-cta mt-4 inline-flex items-center justify-center rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-[0.08em]"
+              >
+                Ver plan PDF
+              </a>
+            </div>
+          </article>
+        );
+      })}
     </div>
   </div>
 </section>
 
 <style>
-  .journey-strip {
+  .plan-grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+  .plan-media-card {
     position: relative;
     overflow: hidden;
-    border-radius: 1.2rem;
-    border: 1px solid rgba(11, 110, 168, 0.2);
-    background:
-      radial-gradient(circle at 20% 20%, rgba(92, 198, 176, 0.16), transparent 42%),
-      radial-gradient(circle at 80% 75%, rgba(255, 176, 32, 0.16), transparent 48%),
-      linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 251, 255, 0.82));
-    box-shadow: 0 12px 24px rgba(11, 110, 168, 0.1);
-    height: 96px;
+    min-height: 18.5rem;
+    border-radius: 0.9rem;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 18px 35px rgba(11, 110, 168, 0.14);
+    background: #0f172a;
     isolation: isolate;
   }
 
-  .journey-track {
-    position: relative;
-    height: 100%;
+  .plan-media-image {
+    position: absolute;
+    inset: 0;
     width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1);
+    transition: transform 0.5s ease;
   }
 
-  .journey-line {
+  .plan-media-overlay {
     position: absolute;
-    left: 1.25rem;
-    right: 1.25rem;
-    top: 50%;
-    height: 2px;
-    transform: translateY(-50%);
-    background-image: linear-gradient(
-      to right,
-      rgba(11, 110, 168, 0.08) 0%,
-      rgba(11, 110, 168, 0.55) 15%,
-      rgba(11, 110, 168, 0.55) 85%,
-      rgba(11, 110, 168, 0.08) 100%
-    );
+    inset: 0;
+    background:
+      linear-gradient(to top, rgba(2, 15, 31, 0.9) 0%, rgba(2, 15, 31, 0.45) 45%, rgba(2, 15, 31, 0.12) 100%),
+      linear-gradient(140deg, rgba(11, 110, 168, 0.1), rgba(244, 109, 79, 0.1));
   }
 
-  .journey-line::before {
-    content: '';
+  .plan-media-content {
     position: absolute;
-    inset: -3px 0;
-    background-image: repeating-linear-gradient(
-      to right,
-      transparent 0,
-      transparent 13px,
-      rgba(255, 255, 255, 0.9) 13px,
-      rgba(255, 255, 255, 0.9) 17px
-    );
-    mix-blend-mode: screen;
-    opacity: 0.55;
+    inset: auto 0 0 0;
+    z-index: 1;
+    padding: 1.2rem;
   }
 
-  .journey-stop {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 0.65rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: #06517c;
-    background: rgba(255, 255, 255, 0.9);
-    border: 1px solid rgba(11, 110, 168, 0.25);
-    border-radius: 999px;
-    padding: 0.25rem 0.55rem;
-  }
-
-  .journey-stop.start {
-    left: 0.85rem;
-  }
-
-  .journey-stop.end {
-    right: 0.85rem;
-  }
-
-  .journey-cloud {
-    position: absolute;
-    opacity: 0.38;
-    color: #6ea6c7;
-    animation: cloudDrift 20s linear infinite;
-    pointer-events: none;
-  }
-
-  .journey-cloud svg {
-    width: 56px;
-    height: 28px;
-    fill: currentColor;
-  }
-
-  .journey-cloud.cloud-a {
-    top: 10px;
-    left: 22%;
-    animation-duration: 19s;
-  }
-
-  .journey-cloud.cloud-b {
-    bottom: 10px;
-    right: 24%;
-    animation-duration: 24s;
-    animation-direction: reverse;
-  }
-
-  .journey-vehicle {
-    position: absolute;
-    left: -12%;
-    color: #0b6ea8;
-    filter: drop-shadow(0 6px 10px rgba(11, 110, 168, 0.22));
-    will-change: transform;
-  }
-
-  .journey-vehicle svg {
-    width: 26px;
-    height: 26px;
-    fill: currentColor;
-  }
-
-  .journey-vehicle.plane {
-    top: 18%;
-    animation: planeTravel 12s linear infinite;
-  }
-
-  .journey-vehicle.bus {
-    bottom: 16%;
-    color: #f46d4f;
-    animation: busTravel 14s linear infinite;
-  }
-
-  .plan-card {
-    position: relative;
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.85);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-  }
-
-  .plan-card::before {
-    content: '';
-    position: absolute;
-    top: -120%;
-    left: -20%;
-    width: 60%;
-    height: 320%;
-    transform: rotate(18deg);
-    background: linear-gradient(
-      to right,
-      rgba(255, 255, 255, 0),
-      rgba(255, 255, 255, 0.42),
-      rgba(255, 255, 255, 0)
-    );
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.2s ease;
-  }
-
-  .plan-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 26px 44px rgba(11, 110, 168, 0.18);
-  }
-
-  .plan-card:hover::before {
-    opacity: 1;
-    animation: cardShine 1s ease;
-  }
-
-  .plan-stamp {
-    position: absolute;
-    right: 1rem;
-    top: 1rem;
+  .plan-media-chip {
     display: inline-flex;
+    align-items: center;
     border-radius: 999px;
-    border: 1px solid rgba(11, 110, 168, 0.28);
-    background: linear-gradient(135deg, rgba(11, 110, 168, 0.16), rgba(92, 198, 176, 0.2));
-    color: #06517c;
-    font-size: 0.62rem;
+    padding: 0.28rem 0.72rem;
+    font-size: 0.67rem;
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    padding: 0.24rem 0.5rem;
+    background: color-mix(in srgb, var(--chip-color) 82%, #0c263c 18%);
+    border: 1px solid color-mix(in srgb, var(--chip-color) 72%, white 28%);
+    color: #ffffff;
+    text-shadow: 0 1px 2px rgba(2, 15, 31, 0.38);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   }
 
-  .reveal-card {
-    opacity: 0;
-    transform: translateY(24px) scale(0.985);
-    transition:
-      opacity 0.55s ease,
-      transform 0.55s cubic-bezier(0.2, 0.8, 0.2, 1);
-    transition-delay: var(--card-delay, 0ms);
+  .transport-stack {
+    position: absolute;
+    top: 0.65rem;
+    right: 0.7rem;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
   }
 
-  .reveal-card.in-view {
-    opacity: 1;
-    transform: translateY(0) scale(1);
+  .transport-icon {
+    width: 1.05rem;
+    height: 1.05rem;
+    color: rgba(255, 255, 255, 0.84);
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    pointer-events: none;
   }
 
-  @keyframes planeTravel {
-    from {
-      transform: translateX(0) translateY(0) rotate(-4deg);
-    }
-    50% {
-      transform: translateX(58vw) translateY(-4px) rotate(-1deg);
-    }
-    to {
-      transform: translateX(118vw) translateY(0) rotate(-3deg);
-    }
+  .transport-icon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
   }
 
-  @keyframes busTravel {
-    from {
-      transform: translateX(0) translateY(0);
-    }
-    50% {
-      transform: translateX(52vw) translateY(1px);
-    }
-    to {
-      transform: translateX(116vw) translateY(0);
-    }
+  .plan-media-cta {
+    color: #06243a;
+    background: color-mix(in srgb, var(--color-mint) 84%, white 16%);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.25);
+    transition: transform 0.2s ease, filter 0.2s ease;
   }
 
-  @keyframes cloudDrift {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(90px);
-    }
+  .plan-media-card:hover .plan-media-image {
+    transform: scale(1.05);
   }
 
-  @keyframes cardShine {
-    from {
-      transform: translateX(-180%) rotate(18deg);
+  .plan-media-card:hover .plan-media-cta {
+    transform: translateY(-2px);
+    filter: brightness(1.02);
+  }
+
+  @media (min-width: 768px) {
+    .plan-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
-    to {
-      transform: translateX(250%) rotate(18deg);
+
+    .plan-media-card {
+      min-height: 20.5rem;
     }
   }
 
-  @media (max-width: 768px) {
-    .journey-strip {
-      height: 82px;
-    }
-
-    .journey-stop {
-      font-size: 0.56rem;
-      padding: 0.18rem 0.42rem;
-    }
-
-    .journey-cloud {
-      display: none;
+  @media (min-width: 1024px) {
+    .plan-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .journey-vehicle,
-    .journey-cloud {
-      animation: none !important;
-    }
-
-    .plan-card,
-    .plan-card::before,
-    .reveal-card {
+    .plan-media-image,
+    .plan-media-cta {
       transition: none !important;
-      animation: none !important;
-    }
-
-    .reveal-card {
-      opacity: 1;
-      transform: none;
     }
   }
 </style>
-
-<script>
-  const cards = document.querySelectorAll('[data-plan-card]');
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  if (prefersReducedMotion) {
-    cards.forEach((card) => card.classList.add('in-view'));
-  } else {
-    const observer = new IntersectionObserver(
-      (entries, currentObserver) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.add('in-view');
-          currentObserver.unobserve(entry.target);
-        });
-      },
-      {
-        threshold: 0.2,
-        rootMargin: '0px 0px -8% 0px',
-      }
-    );
-
-    cards.forEach((card) => observer.observe(card));
-  }
-</script>
