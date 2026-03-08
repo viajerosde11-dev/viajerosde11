@@ -2,30 +2,25 @@
 import { plans } from '../data/site';
 
 const planImages = [
-  '/planes/imagenes/san-andres.jpg',
-  '/planes/imagenes/santa-marta.jpg',
-  '/planes/imagenes/cartagena.jpg',
-  '/planes/imagenes/eje-cafetero.jpg',
-  '/planes/imagenes/san-gil.jpg',
-  '/planes/imagenes/santa-marta-cartagena-avion.jpg',
-  '/planes/imagenes/santa-marta-cartagena-bus.jpg',
+  '/planes/imagenes/SanAndres.jpeg',
+  '/planes/imagenes/SantaMarta.jpeg',
+  '/planes/imagenes/Cartagena.jpeg',
+  '/planes/imagenes/ejecafetero.jpeg',
+  '/planes/imagenes/Sangil.jpeg',
+  '/planes/imagenes/Santamarta-Cartagena-avion.jpeg',
+  '/planes/imagenes/Santamarta-Cartagena-bus.jpeg',
 ];
 
 const getImageForPlan = (index: number) => planImages[index % planImages.length];
-const chipPalette = [
-  'var(--color-ocean)',
-  'var(--color-coral)',
-  'var(--color-mint)',
-  'var(--color-sun)',
-];
-const getChipColor = (index: number) => chipPalette[index % chipPalette.length];
-
-const transportIcon = {
-  plane:
-    '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21 16.5a1 1 0 0 1-1.4.9L13 14.7V18l2 1.5v1l-3-1-3 1v-1l2-1.5v-3.3L4.4 17.4A1 1 0 0 1 3 16.5l7-4V9.8L7.8 8.5v-1l3.2.8V5.5a1 1 0 1 1 2 0v2.8l3.2-.8v1L14 9.8v2.7l7 4z"/></svg>',
-  bus:
-    '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M5 3h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-1a2.5 2.5 0 0 1-5 0h-2a2.5 2.5 0 0 1-5 0H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm0 3v6h14V6H5zm3 10a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm8 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/></svg>',
-} as const;
+const planCardMeta = [
+  { duration: '4 DIAS / 3 NOCHES', mode: 'Aereo', icon: 'plane' },
+  { duration: '4 DIAS / 3 NOCHES', mode: 'Aereo', icon: 'plane' },
+  { duration: '4 DIAS / 3 NOCHES', mode: 'Aereo', icon: 'plane' },
+  { duration: '4 DIAS / 3 NOCHES', mode: 'Terrestre', icon: 'car' },
+  { duration: '4 DIAS / 3 NOCHES', mode: 'Terrestre', icon: 'car' },
+  { duration: '5 DIAS / 4 NOCHES', mode: 'Mixto', icon: 'truck-plane' },
+  { duration: '7 DIAS', mode: 'Terrestre', icon: 'car' },
+] as const;
 ---
 
 <section id="planes" class="relative">
@@ -43,19 +38,35 @@ const transportIcon = {
           hospedaje, actividades y acompanamiento continuo para estudiantes, familias y colegios.
         </p>
       </div>
-      <a
-        href={plans.cta.href}
-        target="_blank"
-        rel="noreferrer"
-        class="rounded-full bg-ocean px-6 py-3 text-sm font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-ocean-dark"
-      >
-        {plans.cta.label}
-      </a>
+    </div>
+
+    <div class="payment-banner">
+      <div class="payment-banner-media" aria-hidden="true">
+        <img
+          src="https://images.unsplash.com/photo-1612278675615-7b093b07772d?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt=""
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+      <div class="payment-banner-copy">
+        <p class="payment-banner-eyebrow">Pagos flexibles para tu promoción</p>
+        <h3>Recibimos todos los medios de pago</h3>
+        <p>Transferencia, tarjeta, efectivo y opciones acordadas para estudiantes, familias y colegios.</p>
+        <div class="payment-banner-footer">
+          <div class="payment-banner-icons" aria-label="Medios de pago">
+            <span><i class="fa-solid fa-building-columns" aria-hidden="true"></i></span>
+            <span><i class="fa-solid fa-credit-card" aria-hidden="true"></i></span>
+            <span><i class="fa-solid fa-money-bill-wave" aria-hidden="true"></i></span>
+            <span><i class="fa-solid fa-wallet" aria-hidden="true"></i></span>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="plan-grid">
       {plans.cards.map((card, index) => {
-        const transportTypes = index === 0 ? (['plane'] as const) : (['plane', 'bus'] as const);
+        const meta = planCardMeta[index] ?? planCardMeta[0];
         const isLast = index === plans.cards.length - 1;
         return (
           <article
@@ -65,34 +76,31 @@ const transportIcon = {
                 'md:col-span-2 md:w-full md:max-w-[26rem] md:justify-self-center lg:col-span-1 lg:col-start-2 lg:max-w-none',
             ]}
           >
-            <img
-              src={getImageForPlan(index)}
-              alt={card.title}
-              loading="lazy"
-              decoding="async"
-              class="plan-media-image"
-            />
-            <div class="plan-media-overlay" aria-hidden="true"></div>
-            <span class="transport-stack" aria-hidden="true">
-              {transportTypes.map((type) => (
-                <span class="transport-icon">
-                  <span set:html={transportIcon[type]} />
-                </span>
-              ))}
-            </span>
+            <div class="plan-media-visual">
+              <img
+                src={getImageForPlan(index)}
+                alt={card.title}
+                loading="lazy"
+                decoding="async"
+                class="plan-media-image"
+              />
+              <div class="plan-media-overlay" aria-hidden="true"></div>
+              <span class="plan-duration-badge">{meta.duration}</span>
+            </div>
             <div class="plan-media-content">
-              <span class="plan-media-chip" style={`--chip-color: ${getChipColor(index)};`}>
-                {card.label}
-              </span>
-              <h3 class="mt-3 text-xl font-bold text-white md:text-2xl">{card.title}</h3>
-              <p class="mt-2 text-sm text-white/90">{card.description}</p>
+              <p class="plan-kicker">Paquete</p>
+              <h3 class="plan-title text-ink">{card.title}</h3>
+              <p class="plan-mode">
+                <i class:list={['fa-solid', `fa-${meta.icon}`]} aria-hidden="true"></i>
+                <span>{meta.mode}</span>
+              </p>
               <a
                 href={card.pdf.href}
                 target="_blank"
                 rel="noreferrer"
                 class="plan-media-cta mt-4 inline-flex items-center justify-center rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-[0.08em]"
               >
-                Ver plan PDF
+                Ver plan
               </a>
             </div>
           </article>
@@ -109,15 +117,127 @@ const transportIcon = {
     grid-template-columns: repeat(1, minmax(0, 1fr));
   }
 
+  .payment-banner {
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+    border-radius: 0.95rem;
+    border: 1px solid rgba(11, 110, 168, 0.22);
+    background:
+      linear-gradient(95deg, #06517c 0%, #0b6ea8 38%, #17a4c4 72%, #5cc6b0 100%);
+    box-shadow: 0 14px 30px rgba(11, 110, 168, 0.12);
+    display: grid;
+    grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+    align-items: stretch;
+    aspect-ratio: 640 / 51;
+    min-height: 0;
+  }
+
+  .payment-banner-media {
+    position: relative;
+    min-height: 100%;
+    overflow: hidden;
+  }
+
+  .payment-banner-media::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(6, 81, 124, 0.04), rgba(6, 81, 124, 0.34));
+  }
+
+  .payment-banner-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 62%;
+    display: block;
+  }
+
+  .payment-banner-copy {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0.14rem;
+    padding: 0.38rem 4rem 0.4rem 0.74rem;
+    color: #ffffff;
+    background:
+      radial-gradient(circle at top right, rgba(255, 176, 32, 0.18), transparent 30%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0));
+  }
+
+  .payment-banner-footer {
+    position: absolute;
+    right: 0.7rem;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .payment-banner-eyebrow {
+    margin: 0;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(220, 245, 255, 0.82);
+  }
+
+  .payment-banner-copy h3 {
+    margin: 0;
+    font-size: clamp(0.8rem, 1.2vw, 1.2rem);
+    font-weight: 800;
+    line-height: 1.04;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+    max-width: none;
+  }
+
+  .payment-banner-copy p {
+    margin: 0;
+    max-width: 40ch;
+    font-size: 0.62rem;
+    line-height: 1.14;
+    color: rgba(245, 248, 255, 0.9);
+  }
+
+  .payment-banner-icons {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.22rem;
+  }
+
+  .payment-banner-icons span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 999px;
+    background: linear-gradient(135deg, rgba(255, 176, 32, 0.95), rgba(92, 198, 176, 0.92));
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    color: #083a5b;
+    box-shadow: 0 4px 10px rgba(3, 37, 58, 0.18);
+    font-size: 0.62rem;
+    flex: 0 0 auto;
+  }
+
   .plan-media-card {
     position: relative;
     overflow: hidden;
-    min-height: 18.5rem;
+    min-height: 100%;
     border-radius: 0.9rem;
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    box-shadow: 0 18px 35px rgba(11, 110, 168, 0.14);
-    background: #0f172a;
-    isolation: isolate;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    box-shadow: 0 12px 26px rgba(11, 110, 168, 0.1);
+    background: rgba(255, 255, 255, 0.95);
+    display: grid;
+    grid-template-rows: auto 1fr;
+  }
+
+  .plan-media-visual {
+    position: relative;
+    min-height: 14rem;
+    overflow: hidden;
   }
 
   .plan-media-image {
@@ -134,55 +254,66 @@ const transportIcon = {
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(to top, rgba(2, 15, 31, 0.9) 0%, rgba(2, 15, 31, 0.45) 45%, rgba(2, 15, 31, 0.12) 100%),
-      linear-gradient(140deg, rgba(11, 110, 168, 0.1), rgba(244, 109, 79, 0.1));
+      linear-gradient(to top, rgba(2, 15, 31, 0.2) 0%, rgba(2, 15, 31, 0.06) 45%, rgba(2, 15, 31, 0) 100%),
+      linear-gradient(140deg, rgba(11, 110, 168, 0.08), rgba(244, 109, 79, 0.05));
+  }
+
+  .plan-duration-badge {
+    position: absolute;
+    left: 1rem;
+    bottom: 1rem;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    border-radius: 0.45rem;
+    background: rgba(15, 23, 42, 0.82);
+    color: #ffffff;
+    padding: 0.38rem 0.6rem;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
   }
 
   .plan-media-content {
-    position: absolute;
-    inset: auto 0 0 0;
-    z-index: 1;
-    padding: 1.2rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.16);
+    padding: 1rem 1rem 1.15rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.7rem;
   }
 
-  .plan-media-chip {
-    display: inline-flex;
-    align-items: center;
-    border-radius: 999px;
-    padding: 0.28rem 0.72rem;
-    font-size: 0.67rem;
+  .plan-kicker {
+    margin: 0;
+    font-size: 0.75rem;
     font-weight: 700;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
-    background: color-mix(in srgb, var(--chip-color) 82%, #0c263c 18%);
-    border: 1px solid color-mix(in srgb, var(--chip-color) 72%, white 28%);
-    color: #ffffff;
-    text-shadow: 0 1px 2px rgba(2, 15, 31, 0.38);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    color: #64748b;
   }
 
-  .transport-stack {
-    position: absolute;
-    top: 0.65rem;
-    right: 0.7rem;
-    z-index: 1;
+  .plan-title {
+    margin: 0;
+    font-size: clamp(1.2rem, 2.8vw, 1.75rem);
+    font-weight: 800;
+    line-height: 1.15;
+    text-wrap: balance;
+  }
+
+  .plan-mode {
+    margin: 0;
     display: inline-flex;
     align-items: center;
-    gap: 0.3rem;
+    gap: 0.5rem;
+    color: #475569;
+    font-size: 0.95rem;
+    font-weight: 600;
   }
 
-  .transport-icon {
-    width: 1.05rem;
-    height: 1.05rem;
-    color: rgba(255, 255, 255, 0.84);
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
-    pointer-events: none;
-  }
-
-  .transport-icon svg {
-    width: 100%;
-    height: 100%;
-    display: block;
+  .plan-mode i {
+    color: var(--color-ocean-dark);
+    font-size: 0.95rem;
   }
 
   .plan-media-cta {
@@ -196,24 +327,85 @@ const transportIcon = {
     transform: scale(1.05);
   }
 
+  .plan-media-card:hover {
+    box-shadow: 0 22px 40px rgba(11, 110, 168, 0.16);
+  }
+
   .plan-media-card:hover .plan-media-cta {
     transform: translateY(-2px);
     filter: brightness(1.02);
   }
 
   @media (min-width: 768px) {
-    .plan-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+    .payment-banner-media {
+      min-height: 100%;
     }
 
-    .plan-media-card {
-      min-height: 20.5rem;
+    .payment-banner-copy {
+      gap: 0.18rem;
+      padding: 0.44rem 5rem 0.46rem 0.86rem;
+    }
+
+    .payment-banner-eyebrow {
+      font-size: 0.68rem;
+    }
+
+    .payment-banner-copy h3 {
+      font-size: clamp(0.98rem, 1.25vw, 1.34rem);
+      max-width: none;
+    }
+
+    .payment-banner-copy p {
+      max-width: 44ch;
+      font-size: 0.66rem;
+      line-height: 1.14;
+    }
+
+    .payment-banner-icons {
+      gap: 0.24rem;
+    }
+
+    .payment-banner-icons span {
+      width: 1.35rem;
+      height: 1.35rem;
+      font-size: 0.72rem;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .payment-banner {
+      grid-template-columns: minmax(0, 0.94fr) minmax(0, 1.06fr);
+      aspect-ratio: 320 / 62;
+    }
+
+    .payment-banner-copy {
+      gap: 0.08rem;
+      padding: 0.3rem 0.55rem 0.32rem 0.48rem;
+    }
+
+    .payment-banner-eyebrow {
+      font-size: 0.46rem;
+    }
+
+    .payment-banner-copy p,
+    .payment-banner-footer {
+      display: none;
+    }
+
+    .payment-banner-copy h3 {
+      font-size: 0.6rem;
+      line-height: 1.02;
+      max-width: 14ch;
     }
   }
 
   @media (min-width: 1024px) {
     .plan-grid {
       grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .plan-media-visual {
+      min-height: 14.5rem;
     }
   }
 

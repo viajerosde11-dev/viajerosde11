@@ -136,7 +136,7 @@ export const plans = {
     {
       label: 'Plan Playa',
       labelColor: 'var(--color-mint)',
-      title: 'San Andrés 4 días / 3 noches',
+      title: 'San Andrés',
       description: 'Plan aéreo con experiencia de playa para promociones de grado 11.',
       planDescription:
         'Incluye itinerario turístico, tiempos libres y acompañamiento durante toda la estadía.',
@@ -150,7 +150,7 @@ export const plans = {
     {
       label: 'Plan Playa',
       labelColor: 'var(--color-mint)',
-      title: 'Santa Marta en avión 4 días / 3 noches',
+      title: 'Santa Marta en avión',
       description:
         'Plan corto para vivir playa, integración y actividades recreativas.',
       planDescription:
@@ -165,7 +165,7 @@ export const plans = {
     {
       label: 'Plan Caribe',
       labelColor: 'var(--color-sun)',
-      title: 'Cartagena en avión 4 días / 3 noches',
+      title: 'Cartagena en avión',
       description:
         'Experiencia en Cartagena con enfoque en diversión y actividades grupales.',
       planDescription:
@@ -180,7 +180,7 @@ export const plans = {
     {
       label: 'Plan Naturaleza',
       labelColor: 'var(--color-ocean)',
-      title: 'Eje Cafetero 4 días / 3 noches',
+      title: 'Eje Cafetero',
       description:
         'Plan para cursos que buscan aventura, paisaje y actividades de integración.',
       planDescription:
@@ -195,7 +195,7 @@ export const plans = {
     {
       label: 'Plan Aventura',
       labelColor: 'var(--color-coral)',
-      title: 'San Gil 4 días / 3 noches',
+      title: 'San Gil',
       description:
         'Plan de aventura para promociones que quieren adrenalina y trabajo en equipo.',
       planDescription:
@@ -210,7 +210,7 @@ export const plans = {
     {
       label: 'Plan Full Fest',
       labelColor: 'var(--color-coral)',
-      title: 'Santa Marta + Cartagena en avión 5 días / 4 noches',
+      title: 'Santa Marta + Cartagena en avión',
       description:
         'Plan combinado para promociones que quieren más tiempo y dos destinos de playa.',
       planDescription:
@@ -225,7 +225,7 @@ export const plans = {
     {
       label: 'Plan Ruta Caribe',
       labelColor: 'var(--color-ocean)',
-      title: 'Santa Marta + Cartagena en bus 7 días',
+      title: 'Santa Marta + Cartagena en bus',
       description:
         'Plan terrestre para promociones que priorizan duración y recorrido completo.',
       planDescription:
