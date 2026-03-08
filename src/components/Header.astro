@@ -4,7 +4,7 @@ import { header, links, navigation, site } from '../data/site';
 const nameParts = site.name.split('@');
 ---
 
-<header class="sticky top-0 z-40 bg-transparent">
+<header class="fixed inset-x-0 top-0 z-40 header-shell">
   <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
     <div class="flex items-center gap-3">
       <img
@@ -70,4 +70,38 @@ const nameParts = site.name.split('@');
     </a>
   </div>
 </header>
+
+<div aria-hidden="true" class="header-spacer"></div>
+
+<style>
+  .header-shell {
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+    padding-bottom: 0.7rem;
+  }
+
+  .header-shell::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    background: var(--color-ocean);
+  }
+
+  .header-spacer {
+    height: 8.9rem;
+  }
+
+  @media (max-width: 768px) {
+    .header-shell {
+      padding-bottom: 0.55rem;
+    }
+
+    .header-spacer {
+      height: 7.8rem;
+    }
+  }
+</style>
 

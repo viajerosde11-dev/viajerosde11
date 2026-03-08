@@ -98,7 +98,7 @@ const icons: Record<string, string> = {
           desde el primer contacto.
         </p>
       </div>
-      <div class="rounded-[2rem] border border-slate-200/70 bg-white/80 p-6 shadow-lg">
+      <div class="rounded-[2rem] border border-black/20 bg-white/88 p-6 shadow-[0_14px_30px_rgba(11,110,168,0.1)]">
         <p class="text-sm font-semibold text-ink">Lo que más valoran los colegios</p>
         <div class="mt-4 grid gap-3 text-sm text-slate-700">
           <div class="flex items-center gap-2">
@@ -124,13 +124,14 @@ const icons: Record<string, string> = {
         return (
           <article
             class:list={[
-              'group relative overflow-hidden rounded-[2.25rem] border border-sun/20 bg-white/90 p-6 shadow-[0_18px_40px_rgba(11,110,168,0.12)] transition hover:-translate-y-1 hover:shadow-[0_24px_55px_rgba(11,110,168,0.18)]',
+              'group relative overflow-hidden rounded-[2.25rem] border border-black/25 bg-white/95 p-6 shadow-[0_14px_30px_rgba(11,110,168,0.1)] transition hover:-translate-y-1 hover:shadow-[0_22px_44px_rgba(11,110,168,0.16)]',
               isLast && 'md:col-span-2 md:max-w-3xl md:justify-self-center',
             ]}
           >
             <div
-              class={`pointer-events-none absolute inset-0 bg-gradient-to-br ${item.accent} opacity-10`}
+              class={`pointer-events-none absolute inset-0 bg-gradient-to-br ${item.accent} opacity-16`}
             ></div>
+            <div class="pointer-events-none absolute inset-x-0 top-0 h-px bg-black/12"></div>
             <div class="relative grid gap-6 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
               <div class="relative w-full max-w-[220px] justify-self-center lg:justify-self-center">
                 <div class={`relative rounded-[2rem] bg-gradient-to-br ${item.accent} p-[2px]`}>
