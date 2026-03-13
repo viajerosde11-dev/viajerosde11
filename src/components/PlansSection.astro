@@ -31,12 +31,9 @@ const planCardMeta = [
           {plans.kicker}
         </p>
         <h2 class="mt-2 text-3xl font-bold text-ink md:text-4xl">
-          Descubre destinos, hoteles y paquetes para grado 11
+          Descubre destinos, hoteles y paquetes para  tu excursión
         </h2>
-        <p class="mt-3 text-sm text-slate-700 md:text-base">
-          En Viajer@s de 11 encuentras planes turisticos completos para promociones: vuelos,
-          hospedaje, actividades y acompanamiento continuo para estudiantes, familias y colegios.
-        </p>
+       
       </div>
     </div>
 
@@ -51,14 +48,86 @@ const planCardMeta = [
       </div>
       <div class="payment-banner-copy">
         <p class="payment-banner-eyebrow">Pagos flexibles para tu promoción</p>
-        <h3>Recibimos todos los medios de pago</h3>
-        <p>Transferencia, tarjeta, efectivo y opciones acordadas para estudiantes, familias y colegios.</p>
+        <h3>Recibimos todos los medios de pago:</h3>
+        <p>Transferencia, tarjeta, efectivo y bonos para pagar el 100% de tu excursion, con opciones de pago flexibles.</p>
         <div class="payment-banner-footer">
           <div class="payment-banner-icons" aria-label="Medios de pago">
-            <span><i class="fa-solid fa-building-columns" aria-hidden="true"></i></span>
-            <span><i class="fa-solid fa-credit-card" aria-hidden="true"></i></span>
-            <span><i class="fa-solid fa-money-bill-wave" aria-hidden="true"></i></span>
-            <span><i class="fa-solid fa-wallet" aria-hidden="true"></i></span>
+            <span aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M6 4.5h4.1c3.28 0 5.4 1.78 5.4 4.63 0 2.83-2.12 4.6-5.4 4.6H8.8v4.77H6V4.5Z"
+                  fill="#FFD24D"
+                />
+                <path
+                  d="M6 4.5h4.1c3.28 0 5.4 1.78 5.4 4.63 0 2.83-2.12 4.6-5.4 4.6H8.8v4.77H6V4.5Z"
+                  stroke="#B46A00"
+                  stroke-width="1.45"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M3.9 8.2h7.7M3.9 11.8h6.3"
+                  stroke="#B46A00"
+                  stroke-width="1.45"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </span>
+            <span aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <rect
+                  x="3.3"
+                  y="5.2"
+                  width="17.4"
+                  height="13.6"
+                  rx="2.8"
+                  fill="url(#cardBg)"
+                />
+                <path
+                  d="M3.3 9.5h17.4"
+                  stroke="#1C67B7"
+                  stroke-width="1.2"
+                  stroke-linecap="round"
+                />
+                <rect x="6" y="11.5" width="3.1" height="2.5" rx="0.5" fill="#FFD76A" stroke="#B78200" stroke-width="0.6" />
+                <path d="M11.3 14.4h4.2" stroke="#D9F2FF" stroke-width="1.2" stroke-linecap="round" />
+                <circle cx="16.7" cy="15.2" r="1.6" fill="#F7A52A" />
+                <circle cx="18.5" cy="15.2" r="1.6" fill="#F25D4A" fill-opacity="0.9" />
+                <rect
+                  x="3.3"
+                  y="5.2"
+                  width="17.4"
+                  height="13.6"
+                  rx="2.8"
+                  stroke="#0C4E8B"
+                  stroke-width="1"
+                />
+                <defs>
+                  <linearGradient id="cardBg" x1="4.2" y1="6" x2="19.8" y2="18.8" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#1CA4FF" />
+                    <stop offset="0.55" stop-color="#1678D5" />
+                    <stop offset="1" stop-color="#0A4E9F" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </span>
+            <span aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <rect x="4.2" y="6.2" width="14.6" height="9.4" rx="1.8" fill="#7CD957" stroke="#2D7C1F" stroke-width="1.1" />
+                <rect x="6.1" y="8.4" width="10.8" height="5" rx="0.9" fill="#B9F18B" />
+                <circle cx="12" cy="10.9" r="2.1" fill="#55B53D" />
+                <path
+                  d="M12.65 9.3c-.21-.18-.53-.33-.92-.33-.66 0-1.11.35-1.11.87 0 .45.33.7 1.06.86.83.19 1.22.51 1.22 1.12 0 .64-.53 1.07-1.31 1.07-.44 0-.87-.13-1.18-.37M12 8.5v4.8"
+                  stroke="#F8FFF2"
+                  stroke-width="1.05"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <circle cx="7.8" cy="17.1" r="2.3" fill="#FFC928" stroke="#C98B00" stroke-width="0.9" />
+                <circle cx="10.1" cy="17.6" r="2.3" fill="#F4B300" stroke="#B67C00" stroke-width="0.9" />
+              </svg>
+            </span>
           </div>
         </div>
       </div>
@@ -211,15 +280,20 @@ const planCardMeta = [
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 1.2rem;
-    height: 1.2rem;
+    width: 1.45rem;
+    height: 1.45rem;
     border-radius: 999px;
-    background: linear-gradient(135deg, rgba(255, 176, 32, 0.95), rgba(92, 198, 176, 0.92));
-    border: 1px solid rgba(255, 255, 255, 0.28);
-    color: #083a5b;
-    box-shadow: 0 4px 10px rgba(3, 37, 58, 0.18);
-    font-size: 0.62rem;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0.04));
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 10px rgba(3, 37, 58, 0.15);
     flex: 0 0 auto;
+  }
+
+  .payment-banner-icons svg {
+    width: 1.18rem;
+    height: 1.18rem;
+    display: block;
+    overflow: visible;
   }
 
   .plan-media-card {
@@ -227,9 +301,9 @@ const planCardMeta = [
     overflow: hidden;
     min-height: 100%;
     border-radius: 0.9rem;
-    border: 1px solid rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(11, 110, 168, 0.24);
     box-shadow: 0 12px 26px rgba(11, 110, 168, 0.1);
-    background: rgba(255, 255, 255, 0.95);
+    background: linear-gradient(180deg, #eef7fb 0%, #e3f1f6 100%);
     display: grid;
     grid-template-rows: auto 1fr;
   }
@@ -275,7 +349,8 @@ const planCardMeta = [
   }
 
   .plan-media-content {
-    border-top: 1px solid rgba(0, 0, 0, 0.16);
+    border-top: 1px solid rgba(11, 110, 168, 0.14);
+    background: linear-gradient(180deg, #e4f4f8 0%, #d7ecf2 100%);
     padding: 1rem 1rem 1.15rem;
     display: flex;
     flex-direction: column;
@@ -366,9 +441,13 @@ const planCardMeta = [
     }
 
     .payment-banner-icons span {
-      width: 1.35rem;
-      height: 1.35rem;
-      font-size: 0.72rem;
+      width: 1.62rem;
+      height: 1.62rem;
+    }
+
+    .payment-banner-icons svg {
+      width: 1.3rem;
+      height: 1.3rem;
     }
   }
 
