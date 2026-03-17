@@ -134,6 +134,34 @@ export const plans = {
   },
   cards: [
     {
+      label: 'Plan Caribe',
+      labelColor: 'var(--color-sun)',
+      title: 'Cartagena + Coveñas',
+      description: 'Ruta de playa y sol visitando Cartagena y Coveñas.',
+      planDescription: 'Plan 5 días / 4 noches con hospedaje, transporte y actividades guiadas.',
+      features: ['Transporte', 'Hospedaje', 'Actividades en playa'],
+      note: 'Cotización personalizada',
+      pdf: {
+        label: 'Ver PDF del plan',
+        href: '/planes/cartagena-covenas-5-dias-4-noches.pdf',
+      },
+    },
+    {
+      label: 'Plan Full Fest',
+      labelColor: 'var(--color-coral)',
+      title: 'Santa Marta + Cartagena en avión',
+      description:
+        'Plan combinado para promociones que quieren más tiempo y dos destinos de playa.',
+      planDescription:
+        'Propuesta premium con experiencia extendida, actividades y acompañamiento completo.',
+      features: ['Vuelos internos del plan', 'Hospedaje', 'Logística integral'],
+      note: 'Cotización personalizada',
+      pdf: {
+        label: 'Ver PDF del plan',
+        href: '/planes/santa-marta-cartagena-en-avion-5-dias-4-noches.pdf',
+      },
+    },
+    {
       label: 'Plan Playa',
       labelColor: 'var(--color-mint)',
       title: 'San Andrés',
@@ -148,33 +176,18 @@ export const plans = {
       },
     },
     {
-      label: 'Plan Playa',
-      labelColor: 'var(--color-mint)',
-      title: 'Santa Marta en avión',
+      label: 'Plan Ruta Caribe',
+      labelColor: 'var(--color-ocean)',
+      title: 'Santa Marta + Cartagena en bus',
       description:
-        'Plan corto para vivir playa, integración y actividades recreativas.',
+        'Plan terrestre para promociones que priorizan duración y recorrido completo.',
       planDescription:
-        'Ideal para grupos que buscan una salida con vuelo y una logística práctica.',
-      features: ['Tiquetes aéreos', 'Hotel y alimentación', 'Acompañamiento constante'],
+        'Opción ideal para grupos grandes que desean vivir una experiencia amplia en el Caribe.',
+      features: ['Transporte terrestre', 'Hospedaje', 'Acompañamiento de ruta'],
       note: 'Cotización personalizada',
       pdf: {
         label: 'Ver PDF del plan',
-        href: '/planes/santa-marta-en-avion-4-dias-3-noches.pdf',
-      },
-    },
-    {
-      label: 'Plan Caribe',
-      labelColor: 'var(--color-sun)',
-      title: 'Cartagena en avión',
-      description:
-        'Experiencia en Cartagena con enfoque en diversión y actividades grupales.',
-      planDescription:
-        'Recomendado para promociones que quieren mar, ciudad y buena logística en pocos días.',
-      features: ['Vuelos ida y regreso', 'Alojamiento', 'Itinerario organizado'],
-      note: 'Cotización personalizada',
-      pdf: {
-        label: 'Ver PDF del plan',
-        href: '/planes/cartagena-en-avion-4-dias-3-noches.pdf',
+        href: '/planes/santa-marta-cartagena-7-dias-en-bus.pdf',
       },
     },
     {
@@ -205,36 +218,6 @@ export const plans = {
       pdf: {
         label: 'Ver PDF del plan',
         href: '/planes/san-gil-4-dias-3-noches.pdf',
-      },
-    },
-    {
-      label: 'Plan Full Fest',
-      labelColor: 'var(--color-coral)',
-      title: 'Santa Marta + Cartagena en avión',
-      description:
-        'Plan combinado para promociones que quieren más tiempo y dos destinos de playa.',
-      planDescription:
-        'Propuesta premium con experiencia extendida, actividades y acompañamiento completo.',
-      features: ['Vuelos internos del plan', 'Hospedaje', 'Logística integral'],
-      note: 'Cotización personalizada',
-      pdf: {
-        label: 'Ver PDF del plan',
-        href: '/planes/santa-marta-cartagena-en-avion-5-dias-4-noches.pdf',
-      },
-    },
-    {
-      label: 'Plan Ruta Caribe',
-      labelColor: 'var(--color-ocean)',
-      title: 'Santa Marta + Cartagena en bus',
-      description:
-        'Plan terrestre para promociones que priorizan duración y recorrido completo.',
-      planDescription:
-        'Opción ideal para grupos grandes que desean vivir una experiencia amplia en el Caribe.',
-      features: ['Transporte terrestre', 'Hospedaje', 'Acompañamiento de ruta'],
-      note: 'Cotización personalizada',
-      pdf: {
-        label: 'Ver PDF del plan',
-        href: '/planes/santa-marta-cartagena-7-dias-en-bus.pdf',
       },
     },
   ],
