@@ -2,26 +2,26 @@
 import { links } from '../data/site';
 
 const quickPoints = [
-  'Te ayudamos a elegir el plan segun presupuesto y cantidad de estudiantes.',
-  'Puedes combinar transporte aereo y terrestre segun el destino.',
-  'La propuesta llega con detalles claros de hotel, actividades y acompanamiento.',
+  'Te ayudamos a elegir el plan segun el presupuesto y la cantidad de estudiantes.',
+  'Conoce el itinerario, actividades y experiencias incluidas en la excursion.',
+  'Resolvemos todas las dudas de estudiantes y padres de familia antes de iniciar el proceso.',
 ];
 
 const faqs = [
   {
-    question: 'Que incluye la cotizacion inicial?',
+    question: '¿Cómo se puede pagar?',
     answer:
-      'Incluye precio estimado por estudiante, transporte, hospedaje, alimentacion y actividades principales.',
+      'Contamos con diferentes medios de pago para facilitar el proceso. Recibimos transferencia, tarjeta, efectivo y bonos para pagar el 100% del valor del viaje, con opciones de pago flexibles durante la organización de la excursión.',
   },
   {
-    question: 'Cuanto tarda la propuesta personalizada?',
+    question: '¿Es seguro el viaje?',
     answer:
-      'Normalmente entregamos una propuesta en menos de 24 horas despues de validar datos del curso.',
+      'Sí. Trabajamos con proveedores verificados, hoteles seleccionados y transporte autorizado. Además, brindamos acompañamiento durante todo el viaje y seguimos protocolos de organización y seguridad para tranquilidad de estudiantes y familias.',
   },
   {
-    question: 'Se puede ajustar el plan por presupuesto?',
+    question: '¿Cuánto cuesta la excursión?',
     answer:
-      'Si. Ajustamos destino, duracion y tipo de transporte para construir una opcion viable para tu promocion.',
+      'El valor depende del destino y el plan de actividades elegido. En la reunión informativa mostramos las opciones disponibles para que la promoción elija la que mejor se ajuste a su presupuesto.',
   },
 ];
 ---
@@ -34,7 +34,7 @@ const faqs = [
           Siguiente paso
         </p>
         <h2 class="mt-3 text-2xl font-bold md:text-3xl">
-          Compara opciones y define el plan ideal para tu curso
+          Agenda una reunion informativa
         </h2>
         <p class="mt-3 text-sm text-slate-700 md:text-base">
           Cierra la decision con datos claros de logistica, seguridad y presupuesto para toda la promocion.
@@ -70,15 +70,15 @@ const faqs = [
       </article>
 
       <article class="rounded-[2.2rem] border border-white/70 bg-white/85 p-7 shadow-[0_16px_36px_rgba(11,110,168,0.12)]">
-        <h3 class="text-xl font-bold text-ink">Preguntas frecuentes de planes</h3>
+        <h3 class="text-xl font-bold text-ink">Preguntas frecuentes</h3>
         <div class="mt-4 space-y-3">
           {faqs.map((item) => (
-            <details class="rounded-xl border border-slate-200/70 bg-white/80 px-4 py-3">
-              <summary class="cursor-pointer list-none text-sm font-semibold text-ocean-dark">
-                {item.question}
-              </summary>
-              <p class="mt-2 text-sm text-slate-700">{item.answer}</p>
-            </details>
+            <div class="rounded-xl border border-slate-200/70 bg-white/85 px-4 py-3 shadow-sm">
+              <div class="space-y-1">
+                <p class="text-sm font-semibold text-ocean-dark">{item.question}</p>
+                <p class="text-sm text-slate-700 leading-relaxed">{item.answer}</p>
+              </div>
+            </div>
           ))}
         </div>
       </article>
