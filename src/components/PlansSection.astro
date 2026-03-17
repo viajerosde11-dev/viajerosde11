@@ -2,24 +2,29 @@
 import { plans } from '../data/site';
 
 const planImages = [
-  '/planes/imagenes/SanAndres.jpeg',
-  '/planes/imagenes/SantaMarta.jpeg',
   '/planes/imagenes/Cartagena.jpeg',
+  '/planes/imagenes/Santamarta-Cartagena-avion.jpeg',
+  '/planes/imagenes/SanAndres.jpeg',
+  '/planes/imagenes/Santamarta-Cartagena-bus.jpeg',
   '/planes/imagenes/ejecafetero.jpeg',
   '/planes/imagenes/Sangil.jpeg',
-  '/planes/imagenes/Santamarta-Cartagena-avion.jpeg',
-  '/planes/imagenes/Santamarta-Cartagena-bus.jpeg',
 ];
 
 const getImageForPlan = (index: number) => planImages[index % planImages.length];
+const planAccentColors = ['var(--color-ocean)', 'var(--color-sun)'] as const;
+const getAccentColor = (index: number) => planAccentColors[index % planAccentColors.length];
+const paymentMethods = [
+  { name: 'Tarjeta', kind: 'tarjeta' },
+  { name: 'Transferencia', kind: 'transferencia' },
+  { name: 'Efectivo', kind: 'efectivo' },
+] as const;
 const planCardMeta = [
-  { duration: '4 DIAS / 3 NOCHES', mode: 'Aereo', icon: 'plane' },
-  { duration: '4 DIAS / 3 NOCHES', mode: 'Aereo', icon: 'plane' },
-  { duration: '4 DIAS / 3 NOCHES', mode: 'Aereo', icon: 'plane' },
-  { duration: '4 DIAS / 3 NOCHES', mode: 'Terrestre', icon: 'car' },
-  { duration: '4 DIAS / 3 NOCHES', mode: 'Terrestre', icon: 'car' },
+  { duration: '5 DIAS / 4 NOCHES', mode: 'Terrestre', icon: 'car' },
   { duration: '5 DIAS / 4 NOCHES', mode: 'Mixto', icon: 'truck-plane' },
+  { duration: '4 DIAS / 3 NOCHES', mode: 'Aereo', icon: 'plane' },
   { duration: '7 DIAS', mode: 'Terrestre', icon: 'car' },
+  { duration: '4 DIAS / 3 NOCHES', mode: 'Terrestre', icon: 'car' },
+  { duration: '4 DIAS / 3 NOCHES', mode: 'Terrestre', icon: 'car' },
 ] as const;
 ---
 
@@ -47,86 +52,40 @@ const planCardMeta = [
         />
       </div>
       <div class="payment-banner-copy">
-        <p class="payment-banner-eyebrow">Pagos flexibles para tu promoción</p>
-        <h3>Recibimos todos los medios de pago:</h3>
-        <p>Transferencia, tarjeta, efectivo y bonos para pagar el 100% de tu excursion, con opciones de pago flexibles.</p>
+        <div class="payment-banner-text">
+          <p class="payment-banner-eyebrow">Pagos flexibles para tu promoción</p>
+          <h3>Recibimos todos los medios de pago</h3>
+          <p>Transferencia, tarjeta, efectivo y bonos para pagar el 100% de tu excursión.</p>
+        </div>
         <div class="payment-banner-footer">
           <div class="payment-banner-icons" aria-label="Medios de pago">
-            <span aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M6 4.5h4.1c3.28 0 5.4 1.78 5.4 4.63 0 2.83-2.12 4.6-5.4 4.6H8.8v4.77H6V4.5Z"
-                  fill="#FFD24D"
-                />
-                <path
-                  d="M6 4.5h4.1c3.28 0 5.4 1.78 5.4 4.63 0 2.83-2.12 4.6-5.4 4.6H8.8v4.77H6V4.5Z"
-                  stroke="#B46A00"
-                  stroke-width="1.45"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M3.9 8.2h7.7M3.9 11.8h6.3"
-                  stroke="#B46A00"
-                  stroke-width="1.45"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
+            <span class="pay-pill">
+              <span class="pay-icon pay-card" aria-hidden="true">
+                <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none">
+                  <rect x="3" y="6" width="18" height="12" rx="2.2" stroke="currentColor" stroke-width="1.6" />
+                  <rect x="6" y="11" width="6" height="2" rx="0.6" fill="#F79E1B" />
+                  <rect x="13" y="11" width="5" height="2" rx="0.6" fill="#EB001B" />
+                </svg>
+              </span>
+              <span class="pay-label">Tarjeta</span>
             </span>
-            <span aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none">
-                <rect
-                  x="3.3"
-                  y="5.2"
-                  width="17.4"
-                  height="13.6"
-                  rx="2.8"
-                  fill="url(#cardBg)"
-                />
-                <path
-                  d="M3.3 9.5h17.4"
-                  stroke="#1C67B7"
-                  stroke-width="1.2"
-                  stroke-linecap="round"
-                />
-                <rect x="6" y="11.5" width="3.1" height="2.5" rx="0.5" fill="#FFD76A" stroke="#B78200" stroke-width="0.6" />
-                <path d="M11.3 14.4h4.2" stroke="#D9F2FF" stroke-width="1.2" stroke-linecap="round" />
-                <circle cx="16.7" cy="15.2" r="1.6" fill="#F7A52A" />
-                <circle cx="18.5" cy="15.2" r="1.6" fill="#F25D4A" fill-opacity="0.9" />
-                <rect
-                  x="3.3"
-                  y="5.2"
-                  width="17.4"
-                  height="13.6"
-                  rx="2.8"
-                  stroke="#0C4E8B"
-                  stroke-width="1"
-                />
-                <defs>
-                  <linearGradient id="cardBg" x1="4.2" y1="6" x2="19.8" y2="18.8" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#1CA4FF" />
-                    <stop offset="0.55" stop-color="#1678D5" />
-                    <stop offset="1" stop-color="#0A4E9F" />
-                  </linearGradient>
-                </defs>
-              </svg>
+            <span class="pay-pill">
+              <span class="pay-icon pay-transfer" aria-hidden="true">
+                <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none">
+                  <path d="M7 8h9M7 12h7M7 16h9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                  <path d="m12 5 4 3-4 3" stroke="#5CC6B0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </span>
+              <span class="pay-label">Transferencia</span>
             </span>
-            <span aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none">
-                <rect x="4.2" y="6.2" width="14.6" height="9.4" rx="1.8" fill="#7CD957" stroke="#2D7C1F" stroke-width="1.1" />
-                <rect x="6.1" y="8.4" width="10.8" height="5" rx="0.9" fill="#B9F18B" />
-                <circle cx="12" cy="10.9" r="2.1" fill="#55B53D" />
-                <path
-                  d="M12.65 9.3c-.21-.18-.53-.33-.92-.33-.66 0-1.11.35-1.11.87 0 .45.33.7 1.06.86.83.19 1.22.51 1.22 1.12 0 .64-.53 1.07-1.31 1.07-.44 0-.87-.13-1.18-.37M12 8.5v4.8"
-                  stroke="#F8FFF2"
-                  stroke-width="1.05"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <circle cx="7.8" cy="17.1" r="2.3" fill="#FFC928" stroke="#C98B00" stroke-width="0.9" />
-                <circle cx="10.1" cy="17.6" r="2.3" fill="#F4B300" stroke="#B67C00" stroke-width="0.9" />
-              </svg>
+            <span class="pay-pill">
+              <span class="pay-icon pay-cash" aria-hidden="true">
+                <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none">
+                  <rect x="4" y="7" width="16" height="10" rx="2.2" stroke="currentColor" stroke-width="1.7" />
+                  <circle cx="12" cy="12" r="2.4" fill="currentColor" />
+                </svg>
+              </span>
+              <span class="pay-label">Efectivo</span>
             </span>
           </div>
         </div>
@@ -136,29 +95,27 @@ const planCardMeta = [
     <div class="plan-grid">
       {plans.cards.map((card, index) => {
         const meta = planCardMeta[index] ?? planCardMeta[0];
-        const isLast = index === plans.cards.length - 1;
         return (
           <article
-            class:list={[
-              'plan-media-card',
-              isLast &&
-                'md:col-span-2 md:w-full md:max-w-[26rem] md:justify-self-center lg:col-span-1 lg:col-start-2 lg:max-w-none',
-            ]}
+            class:list={['plan-media-card']}
+            style={`--plan-accent: ${getAccentColor(index)};`}
           >
-            <div class="plan-media-visual">
+            <div class="plan-card-media">
               <img
                 src={getImageForPlan(index)}
                 alt={card.title}
                 loading="lazy"
                 decoding="async"
-                class="plan-media-image"
+                class="plan-card-image"
               />
-              <div class="plan-media-overlay" aria-hidden="true"></div>
-              <span class="plan-duration-badge">{meta.duration}</span>
+              <div class="plan-card-overlay" aria-hidden="true"></div>
+              <div class="plan-card-badge-row">
+                <span class="plan-duration-badge">{meta.duration}</span>
+              </div>
             </div>
-            <div class="plan-media-content">
-              <p class="plan-kicker">Paquete</p>
-              <h3 class="plan-title text-ink">{card.title}</h3>
+            <div class="plan-card-content">
+              <p class="plan-kicker">{plans.kicker}</p>
+              <h3 class="plan-title">{card.title}</h3>
               <p class="plan-mode">
                 <i class:list={['fa-solid', `fa-${meta.icon}`]} aria-hidden="true"></i>
                 <span>{meta.mode}</span>
@@ -167,7 +124,7 @@ const planCardMeta = [
                 href={card.pdf.href}
                 target="_blank"
                 rel="noreferrer"
-                class="plan-media-cta mt-4 inline-flex items-center justify-center rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-[0.08em]"
+                class="plan-media-cta inline-flex items-center justify-center rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-[0.08em]"
               >
                 Ver plan
               </a>
@@ -184,6 +141,8 @@ const planCardMeta = [
     display: grid;
     gap: 1rem;
     grid-template-columns: repeat(1, minmax(0, 1fr));
+    grid-auto-flow: dense;
+    grid-auto-rows: 1fr;
   }
 
   .payment-banner {
@@ -224,23 +183,27 @@ const planCardMeta = [
 
   .payment-banner-copy {
     position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 0.14rem;
-    padding: 0.38rem 4rem 0.4rem 0.74rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.9rem 1rem 0.9rem 1rem;
     color: #ffffff;
     background:
       radial-gradient(circle at top right, rgba(255, 176, 32, 0.18), transparent 30%),
       linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0));
   }
 
+  .payment-banner-text {
+    min-width: 0;
+  }
+
   .payment-banner-footer {
-    position: absolute;
-    right: 0.7rem;
-    top: 50%;
-    transform: translateY(-50%);
+    position: static;
+    width: 100%;
+    justify-self: end;
+    align-self: center;
+    max-width: none;
   }
 
   .payment-banner-eyebrow {
@@ -271,108 +234,146 @@ const planCardMeta = [
   }
 
   .payment-banner-icons {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.22rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    max-width: 230px;
+    justify-content: flex-end;
   }
 
-  .payment-banner-icons span {
+  .pay-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    height: 30px;
+    padding: 0 0.65rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.32);
+    background: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 4px 12px rgba(3, 37, 58, 0.14);
+    backdrop-filter: blur(6px);
+  }
+
+  .pay-icon {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 1.45rem;
-    height: 1.45rem;
-    border-radius: 999px;
-    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0.04));
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 4px 10px rgba(3, 37, 58, 0.15);
-    flex: 0 0 auto;
+    width: 18px;
+    height: 18px;
+    border-radius: 7px;
   }
 
-  .payment-banner-icons svg {
-    width: 1.18rem;
-    height: 1.18rem;
-    display: block;
-    overflow: visible;
+  .pay-card {
+    background: #f2f6ff;
+    color: #1434cb;
+  }
+
+  .pay-transfer {
+    background: #e8f7f3;
+    color: #0b6ea8;
+  }
+
+  .pay-cash {
+    background: #fff3d7;
+    color: #c98600;
+  }
+
+  .pay-label {
+    font-size: 10.5px;
+    font-weight: 700;
+    color: #ffffff;
+    white-space: nowrap;
   }
 
   .plan-media-card {
     position: relative;
     overflow: hidden;
-    min-height: 100%;
-    border-radius: 0.9rem;
-    border: 1px solid rgba(11, 110, 168, 0.24);
-    box-shadow: 0 12px 26px rgba(11, 110, 168, 0.1);
-    background: linear-gradient(180deg, #eef7fb 0%, #e3f1f6 100%);
-    display: grid;
-    grid-template-rows: auto 1fr;
+    min-height: 24.5rem;
+    height: 100%;
+    border-radius: 1.35rem;
+    border: 1px solid var(--plan-accent);
+    box-shadow: 0 16px 34px color-mix(in srgb, var(--plan-accent) 20%, transparent);
+    background: #ffffff;
+    isolation: isolate;
+    display: flex;
+    flex-direction: column;
   }
 
-  .plan-media-visual {
+  .plan-card-media {
     position: relative;
-    min-height: 14rem;
     overflow: hidden;
+    width: 100%;
+    aspect-ratio: 4 / 3;
   }
 
-  .plan-media-image {
-    position: absolute;
-    inset: 0;
+  .plan-card-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transform: scale(1);
     transition: transform 0.5s ease;
+    display: block;
   }
 
-  .plan-media-overlay {
+  .plan-card-overlay {
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(to top, rgba(2, 15, 31, 0.2) 0%, rgba(2, 15, 31, 0.06) 45%, rgba(2, 15, 31, 0) 100%),
-      linear-gradient(140deg, rgba(11, 110, 168, 0.08), rgba(244, 109, 79, 0.05));
+      linear-gradient(180deg, rgba(5, 20, 34, 0.08) 0%, rgba(5, 20, 34, 0.02) 62%, rgba(5, 20, 34, 0.18) 100%);
+  }
+
+  .plan-card-badge-row {
+    position: absolute;
+    left: 1rem;
+    right: 1rem;
+    bottom: 0.95rem;
+    z-index: 1;
+    display: flex;
+    align-items: center;
   }
 
   .plan-duration-badge {
-    position: absolute;
-    left: 1rem;
-    bottom: 1rem;
+    position: static;
     z-index: 1;
     display: inline-flex;
     align-items: center;
-    border-radius: 0.45rem;
-    background: rgba(15, 23, 42, 0.82);
+    border-radius: 0.85rem;
+    background: rgba(24, 30, 49, 0.74);
     color: #ffffff;
-    padding: 0.38rem 0.6rem;
-    font-size: 0.78rem;
+    padding: 0.58rem 0.9rem;
+    font-size: 0.72rem;
     font-weight: 800;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.08em;
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.22);
+    backdrop-filter: blur(12px);
   }
 
-  .plan-media-content {
-    border-top: 1px solid rgba(11, 110, 168, 0.14);
-    background: linear-gradient(180deg, #e4f4f8 0%, #d7ecf2 100%);
-    padding: 1rem 1rem 1.15rem;
+  .plan-card-content {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: space-between;
-    gap: 0.7rem;
+    gap: 0.82rem;
+    padding: 0.95rem 0.95rem 1.1rem;
+    background: #ffffff;
+    border-top: 1px solid color-mix(in srgb, var(--plan-accent) 22%, white);
+    flex: 1 1 auto;
   }
 
   .plan-kicker {
     margin: 0;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.16em;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: #64748b;
+    color: #6c7c95;
   }
 
   .plan-title {
     margin: 0;
-    font-size: clamp(1.2rem, 2.8vw, 1.75rem);
+    color: #1f2a37;
+    font-size: clamp(1.05rem, 2vw, 1.35rem);
     font-weight: 800;
-    line-height: 1.15;
+    line-height: 1.04;
     text-wrap: balance;
   }
 
@@ -381,13 +382,13 @@ const planCardMeta = [
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    color: #475569;
-    font-size: 0.95rem;
-    font-weight: 600;
+    color: #5c6e8b;
+    font-size: 0.98rem;
+    font-weight: 700;
   }
 
   .plan-mode i {
-    color: var(--color-ocean-dark);
+    color: var(--plan-accent);
     font-size: 0.95rem;
   }
 
@@ -396,9 +397,10 @@ const planCardMeta = [
     background: color-mix(in srgb, var(--color-mint) 84%, white 16%);
     box-shadow: 0 10px 22px rgba(0, 0, 0, 0.25);
     transition: transform 0.2s ease, filter 0.2s ease;
+    margin-top: auto;
   }
 
-  .plan-media-card:hover .plan-media-image {
+  .plan-media-card:hover .plan-card-image {
     transform: scale(1.05);
   }
 
@@ -412,13 +414,17 @@ const planCardMeta = [
   }
 
   @media (min-width: 768px) {
+    .plan-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
     .payment-banner-media {
       min-height: 100%;
     }
 
     .payment-banner-copy {
-      gap: 0.18rem;
-      padding: 0.44rem 5rem 0.46rem 0.86rem;
+      gap: 0.9rem;
+      padding: 1rem 1.1rem 1rem 1.1rem;
     }
 
     .payment-banner-eyebrow {
@@ -436,38 +442,70 @@ const planCardMeta = [
       line-height: 1.14;
     }
 
-    .payment-banner-icons {
-      gap: 0.24rem;
-    }
-
-    .payment-banner-icons span {
-      width: 1.62rem;
-      height: 1.62rem;
-    }
-
-    .payment-banner-icons svg {
-      width: 1.3rem;
-      height: 1.3rem;
-    }
+    .payment-banner-footer { max-width: none; }
   }
 
+@media (max-width: 1100px) {
+  .payment-banner-copy {
+    grid-template-columns: 1fr;
+    align-items: start;
+    gap: 0.7rem;
+  }
+
+  .payment-banner-footer {
+    width: 100%;
+    justify-self: start;
+    max-width: none;
+  }
+
+  .payment-banner-icons {
+    justify-content: flex-start;
+    gap: 0.6rem;
+    max-width: none;
+  }
+}
+
   @media (max-width: 520px) {
+    .plan-media-card {
+      min-height: 25.5rem;
+      grid-template-rows: 12.4rem minmax(0, 1fr);
+    }
+
+    .plan-card-badge-row {
+      left: 0.85rem;
+      right: 0.85rem;
+      bottom: 0.85rem;
+    }
+
+    .plan-duration-badge {
+      font-size: 0.66rem;
+      padding: 0.52rem 0.8rem;
+    }
+
+    .plan-card-content {
+      gap: 0.8rem;
+      padding: 0.95rem 0.9rem 1rem;
+    }
+
+    .plan-title {
+      font-size: 1.28rem;
+    }
+
     .payment-banner {
       grid-template-columns: minmax(0, 0.94fr) minmax(0, 1.06fr);
-      aspect-ratio: 320 / 62;
+      aspect-ratio: auto;
     }
 
     .payment-banner-copy {
-      gap: 0.08rem;
-      padding: 0.3rem 0.55rem 0.32rem 0.48rem;
+      gap: 0.6rem;
+      padding: 0.65rem 0.6rem 0.7rem 0.6rem;
     }
 
     .payment-banner-eyebrow {
       font-size: 0.46rem;
     }
 
-    .payment-banner-copy p,
-    .payment-banner-footer {
+    .payment-banner-copy p {
       display: none;
     }
 
@@ -476,20 +514,26 @@ const planCardMeta = [
       line-height: 1.02;
       max-width: 14ch;
     }
+
+    .payment-banner-footer {
+      width: 100%;
+    }
+
+    .payment-banner-icons {
+      justify-content: flex-start;
+      max-width: none;
+      gap: 0.35rem;
+    }
   }
 
   @media (min-width: 1024px) {
     .plan-grid {
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
-
-    .plan-media-visual {
-      min-height: 14.5rem;
-    }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .plan-media-image,
+    .plan-card-image,
     .plan-media-cta {
       transition: none !important;
     }
