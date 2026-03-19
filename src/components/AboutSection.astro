@@ -40,6 +40,26 @@ const blocks = [
     ],
   },
 ];
+
+const introHighlights = [
+  {
+    title: 'Equipo',
+    tone: 'ocean',
+    icon: 'spark',
+  },
+  {
+    title: 'Logistica',
+    tone: 'mint',
+    icon: 'chat',
+  },
+  {
+    title: 'Cuidado',
+    tone: 'sun',
+    icon: 'shield',
+  },
+] as const;
+
+const summaryTags = ['Coordinacion', 'Respaldo', 'Acompanamiento'] as const;
 ---
 
 <section id="quienes-somos" class="relative">
@@ -54,8 +74,35 @@ const blocks = [
 
         <div class="video-stage">
           <aside class="intro-panel">
-            <h2 class="intro-top-title">Una mirada real</h2>
-            <p class="intro-top-copy">a cómo creamos experiencias de grado 11</p>
+            <div class="intro-copy-stack">
+              <h2 class="intro-top-title">Asi se vive</h2>
+              <p class="intro-top-copy">tu excursion con Viajeros de 11</p>
+            </div>
+            <div class="intro-highlight-grid">
+              {introHighlights.map((item) => (
+                <article class="intro-highlight-card">
+                  <span class:list={['intro-highlight-icon', `tone-${item.tone}`]} aria-hidden="true">
+                    {item.icon === 'spark' && (
+                      <svg viewBox="0 0 24 24">
+                        <path d="M12 3.5 13.9 9l5.6 1.9-5.6 1.9L12 18.5l-1.9-5.7L4.5 10.9 10.1 9 12 3.5Z"></path>
+                      </svg>
+                    )}
+                    {item.icon === 'chat' && (
+                      <svg viewBox="0 0 24 24">
+                        <path d="M6 7.5h12a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H10l-4 3v-3.2H6a2 2 0 0 1-2-2v-6a2 2 0 0 1 2-2Z"></path>
+                      </svg>
+                    )}
+                    {item.icon === 'shield' && (
+                      <svg viewBox="0 0 24 24">
+                        <path d="M12 4 18 6.5v4.3c0 4.1-2.4 7.7-6 9.2-3.6-1.5-6-5.1-6-9.2V6.5L12 4Z"></path>
+                        <path d="m9.4 12 1.7 1.7 3.5-3.5"></path>
+                      </svg>
+                    )}
+                  </span>
+                  <p class="intro-highlight-title">{item.title}</p>
+                </article>
+              ))}
+            </div>
             <span class="intro-arrow" aria-hidden="true">
               <svg viewBox="0 0 64 24">
                 <defs>
@@ -131,11 +178,23 @@ const blocks = [
           </div>
         </div>
 
-        <p class="mx-auto mt-8 max-w-3xl text-center text-base text-slate-700 md:text-lg">
-          Somos Viajeros de 11, una agencia especializada en excursiones de grado 11.
-          Acompañamos a estudiantes y familias en cada paso del viaje, con organización,
-          seguridad y experiencias inolvidables.
-        </p>
+        <div class="about-signature">
+          <span class="about-signature-mark" aria-hidden="true"></span>
+          <p class="about-signature-copy">
+            <span class="about-signature-lead">
+              Somos Viajeros de 11, una agencia especializada en excursiones de grado 11.
+            </span>
+            <span class="about-signature-body">
+              Acompañamos a estudiantes y familias en cada paso del viaje, con
+              <strong> organizacion</strong>, <strong>seguridad</strong> y experiencias inolvidables.
+            </span>
+          </p>
+          <div class="about-signature-tags" aria-label="Pilares de Viajeros de 11">
+            {summaryTags.map((tag) => (
+              <span class="about-signature-tag">{tag}</span>
+            ))}
+          </div>
+        </div>
 
         <div class="mt-12 grid gap-8">
           {blocks.map((block, index) => (
@@ -258,9 +317,17 @@ const blocks = [
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    text-align: center;
+    align-items: stretch;
     gap: 1rem;
+    position: relative;
+    background:
+      radial-gradient(circle at 12% 18%, rgba(92, 198, 176, 0.16), transparent 30%),
+      radial-gradient(circle at 88% 78%, rgba(255, 176, 32, 0.12), transparent 28%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(244, 250, 255, 0.72));
+  }
+
+  .intro-copy-stack {
+    text-align: center;
   }
 
   .intro-top-title {
@@ -278,21 +345,84 @@ const blocks = [
   .intro-top-copy {
     margin: 0;
     color: #0f4f79;
-    font-size: clamp(1.12rem, 1.32vw, 1.22rem);
+    font-size: clamp(1.02rem, 1.2vw, 1.12rem);
     line-height: 1.42;
     font-weight: 650;
-    max-width: 34ch;
+    max-width: 24ch;
+    margin-inline: auto;
   }
 
   .intro-arrow {
     width: 4.8rem;
     animation: introArrowMove 1.35s ease-in-out infinite;
+    margin-inline: auto;
   }
 
   .intro-arrow svg {
     width: 100%;
     height: auto;
     display: block;
+  }
+
+  .intro-highlight-grid {
+    width: min(100%, 26rem);
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.85rem;
+  }
+
+  .intro-highlight-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0.95rem 0.75rem;
+    border-radius: 1.25rem;
+    border: 1px solid rgba(11, 110, 168, 0.1);
+    background: rgba(255, 255, 255, 0.76);
+    box-shadow: 0 14px 26px rgba(11, 110, 168, 0.08);
+    backdrop-filter: blur(10px);
+  }
+
+  .intro-highlight-icon {
+    flex: 0 0 auto;
+    width: 2.35rem;
+    height: 2.35rem;
+    border-radius: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .intro-highlight-icon svg {
+    width: 1.2rem;
+    height: 1.2rem;
+    fill: currentColor;
+  }
+
+  .intro-highlight-icon.tone-ocean {
+    background: rgba(11, 110, 168, 0.12);
+    color: #0b6ea8;
+  }
+
+  .intro-highlight-icon.tone-mint {
+    background: rgba(92, 198, 176, 0.16);
+    color: #119487;
+  }
+
+  .intro-highlight-icon.tone-sun {
+    background: rgba(255, 176, 32, 0.16);
+    color: #d88b00;
+  }
+
+  .intro-highlight-title {
+    margin: 0;
+    font-size: 0.88rem;
+    font-weight: 800;
+    color: #0f3b59;
   }
 
   .video-accent {
@@ -356,6 +486,79 @@ const blocks = [
     bottom: 0.5rem;
     left: -0.7rem;
     background: linear-gradient(135deg, rgba(92, 198, 176, 0.22), rgba(255, 255, 255, 0));
+  }
+
+  .about-signature {
+    margin: 2rem auto 0;
+    width: min(100%, 46rem);
+    padding: 1.35rem 1.2rem 1.15rem;
+    border-radius: 1.7rem;
+    border: 1px solid rgba(11, 110, 168, 0.1);
+    background:
+      radial-gradient(circle at 12% 20%, rgba(92, 198, 176, 0.14), transparent 28%),
+      radial-gradient(circle at 88% 22%, rgba(255, 176, 32, 0.12), transparent 24%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(244, 250, 255, 0.86));
+    box-shadow: 0 18px 34px rgba(11, 110, 168, 0.08);
+    text-align: center;
+  }
+
+  .about-signature-mark {
+    width: 4.2rem;
+    height: 0.32rem;
+    margin: 0 auto 0.95rem;
+    display: block;
+    border-radius: 999px;
+    background: linear-gradient(90deg, rgba(11, 110, 168, 0.9), rgba(92, 198, 176, 0.95), rgba(255, 176, 32, 0.92));
+    box-shadow: 0 8px 16px rgba(11, 110, 168, 0.14);
+  }
+
+  .about-signature-copy {
+    margin: 0;
+    color: #334a63;
+    font-size: clamp(0.92rem, 1.12vw, 1.05rem);
+    line-height: 1.58;
+    font-weight: 520;
+    display: grid;
+    gap: 0.45rem;
+  }
+
+  .about-signature-copy strong {
+    color: #0b6ea8;
+    font-weight: 800;
+  }
+
+  .about-signature-lead {
+    display: block;
+    color: #173a59;
+    font-size: clamp(0.98rem, 1.24vw, 1.12rem);
+    font-weight: 760;
+    letter-spacing: -0.01em;
+  }
+
+  .about-signature-body {
+    display: block;
+  }
+
+  .about-signature-tags {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.65rem;
+  }
+
+  .about-signature-tag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 0.92rem;
+    border-radius: 999px;
+    border: 1px solid rgba(11, 110, 168, 0.1);
+    background: rgba(255, 255, 255, 0.88);
+    color: #0f4f79;
+    font-size: 0.84rem;
+    font-weight: 760;
+    box-shadow: 0 8px 18px rgba(11, 110, 168, 0.06);
   }
 
   .video-main {
@@ -554,6 +757,47 @@ const blocks = [
 
     .intro-arrow {
       width: 3.8rem;
+    }
+
+    .intro-highlight-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.7rem;
+    }
+
+    .intro-highlight-card {
+      padding: 0.8rem 0.55rem;
+    }
+
+    .intro-highlight-title {
+      font-size: 0.78rem;
+    }
+
+    .about-signature {
+      margin-top: 1.6rem;
+      padding: 1.1rem 0.95rem 1rem;
+    }
+
+    .about-signature-mark {
+      width: 3.2rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .about-signature-copy {
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+
+    .about-signature-lead {
+      font-size: 0.94rem;
+    }
+
+    .about-signature-tags {
+      gap: 0.5rem;
+    }
+
+    .about-signature-tag {
+      padding: 0.45rem 0.72rem;
+      font-size: 0.76rem;
     }
 
     .video-audio-control {
