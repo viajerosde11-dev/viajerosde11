@@ -13,11 +13,6 @@ const planImages = [
 const getImageForPlan = (index: number) => planImages[index % planImages.length];
 const planAccentColors = ['var(--color-ocean)', 'var(--color-sun)'] as const;
 const getAccentColor = (index: number) => planAccentColors[index % planAccentColors.length];
-const paymentMethods = [
-  { name: 'Tarjeta', kind: 'tarjeta' },
-  { name: 'Transferencia', kind: 'transferencia' },
-  { name: 'Efectivo', kind: 'efectivo' },
-] as const;
 const planCardMeta = [
   { duration: '5 DIAS / 4 NOCHES', mode: 'Terrestre', icon: 'car' },
   { duration: '5 DIAS / 4 NOCHES', mode: 'Mixto', icon: 'truck-plane' },
@@ -86,6 +81,16 @@ const planCardMeta = [
                 </svg>
               </span>
               <span class="pay-label">Efectivo</span>
+            </span>
+            <span class="pay-pill">
+              <span class="pay-icon pay-bonus" aria-hidden="true">
+                <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none">
+                  <path d="M7 7.5h10a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.7" />
+                  <path d="M12 7.5v9" stroke="#A54CE6" stroke-width="1.7" stroke-linecap="round" />
+                  <path d="M9.2 10.1c0-.95.74-1.6 1.8-1.6 1.04 0 1.8.64 1.8 1.6 0 1.86-3.6 1.15-3.6 3.3 0 .95.76 1.6 1.8 1.6 1.06 0 1.8-.65 1.8-1.6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" />
+                </svg>
+              </span>
+              <span class="pay-label">Bonos</span>
             </span>
           </div>
         </div>
@@ -276,6 +281,11 @@ const planCardMeta = [
   .pay-cash {
     background: #fff3d7;
     color: #c98600;
+  }
+
+  .pay-bonus {
+    background: #f4eaff;
+    color: #7c3aed;
   }
 
   .pay-label {
