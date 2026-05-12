@@ -14,8 +14,8 @@ const getImageForPlan = (index: number) => planImages[index % planImages.length]
 const planAccentColors = ['var(--color-ocean)', 'var(--color-sun)'] as const;
 const getAccentColor = (index: number) => planAccentColors[index % planAccentColors.length];
 const planCardMeta = [
-  { duration: '5 DIAS / 4 NOCHES', mode: 'Terrestre', icon: 'car' },
-  { duration: '5 DIAS / 4 NOCHES', mode: 'Mixto', icon: 'truck-plane' },
+  { duration: '5 DIAS / 4 NOCHES', mode: 'Aereo', icon: 'plane' },
+  { duration: '5 DIAS / 4 NOCHES', mode: 'Aereo', icon: 'plane' },
   { duration: '4 DIAS / 3 NOCHES', mode: 'Aereo', icon: 'plane' },
   { duration: '7 DIAS', mode: 'Terrestre', icon: 'car' },
   { duration: '4 DIAS / 3 NOCHES', mode: 'Terrestre', icon: 'car' },
@@ -119,7 +119,7 @@ const planCardMeta = [
               </div>
             </div>
             <div class="plan-card-content">
-              <p class="plan-kicker">{plans.kicker}</p>
+              <p class="plan-kicker">Plan</p>
               <h3 class="plan-title">{card.title}</h3>
               <p class="plan-mode">
                 <i class:list={['fa-solid', `fa-${meta.icon}`]} aria-hidden="true"></i>
