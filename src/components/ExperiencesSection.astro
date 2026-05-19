@@ -99,7 +99,9 @@ const carouselImages = experienceImages.filter(
 
       <div class="experience-hero-copy">
         <p class="experience-kicker">Experiencias reales</p>
-        <h2>La excursión se cuenta mejor cuando ya parece recuerdo.</h2>
+        <h2>
+          Mejores excursiones son esas que se convierten en recuerdos inolvidables<span class="experience-title-sparkles" aria-hidden="true">✨</span>
+        </h2>
         <p>
           Convertimos el viaje de grado 11 en una secuencia de momentos: mar, juegos,
           celebración, fotos y acompañamiento para que cada estudiante tenga una historia que contar.
@@ -252,6 +254,14 @@ const carouselImages = experienceImages.filter(
     max-width: 12ch;
     font-size: clamp(2.5rem, 7vw, 5.4rem);
     color: #ffffff;
+  }
+
+  .experience-title-sparkles {
+    display: inline-block;
+    margin-left: 0.08em;
+    font-size: 0.36em;
+    vertical-align: 0.28em;
+    letter-spacing: 0;
   }
 
   .experience-hero-copy p:not(.experience-kicker),
